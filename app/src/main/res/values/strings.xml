@@ -1,3 +1,29 @@
 <resources>
-    <string name="app_name">AndroidPractReversi</string>
+    <string name="app_name">Reversi Revolution Game</string>
+    <string name="MainMenuTitle">Main Menu</string>
+    <string name="btnHelp">Help</string>
+    <string name="btnInit">Init Game</string>
+    <string name="btnExit">Exit</string>
+    <string name="title_activity_help">help</string>
+
+    <!--- Help Activity -->
+    <string name="HelpTitle">Help</string>
+    <string name="backBtn">Go back</string>
+
+    <!--- Options Activity -->
+    <string name="OptionsTitle">Options</string>
+    <string name="startBtn">Start</string>
+    <string name="alias">Username</string>
+    <string name="optionsHint1">Enter your Username</string>
+    <string name="size">Size of the grid</string>
+    <string name="time">Against the clock</string>
+
+    <!--- Results Activity -->
+    <string name="ResultsTitle">Results</string>
+    <string name="ResultsTitle2">Results of the game</string>
+    <string name="date">Date and time of the game</string>
+    <string name="resume">Log of the game</string>
+    <string name="email">E-Mail to send the log</string>
+
+
 </resources>

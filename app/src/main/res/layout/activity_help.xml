@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="agut_giralt.androidpractreversi.MainActivity">
+    tools:context="agut_giralt.androidpractreversi.help">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,34 +23,20 @@
             android:id="@+id/MainMenuTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/MainMenuTitle"
+            android:text="@string/HelpTitle"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/title"
             android:textStyle="bold" />
     </LinearLayout>
 
-    <LinearLayout
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:text="Help" />
 
-        <Button
-            android:id="@+id/btnHelp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/btnHelp" />
-
-        <Button
-            android:id="@+id/btnInit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/btnInit" />
-
-        <Button
-            android:id="@+id/btnExit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/btnExit" />
-    </LinearLayout>
+    <Button
+        android:id="@+id/backBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/backBtn" />
 </LinearLayout>

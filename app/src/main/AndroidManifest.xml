@@ -16,6 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".help" />
+        <activity android:name=".ActivityOptions" />
+        <activity android:name=".ActivityGame" />
+        <activity android:name=".ActivityResult"></activity>
     </application>
 
 </manifest>
