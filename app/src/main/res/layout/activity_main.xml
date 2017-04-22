@@ -3,31 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackground"
     android:orientation="vertical"
-    tools:context="agut_giralt.androidpractreversi.MainActivity">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp">
-
-        <ImageView
-            android:id="@+id/MainMenuImg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/home" />
-
-        <TextView
-            android:id="@+id/MainMenuTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/MainMenuTitle"
-            android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/title"
-            android:textStyle="bold" />
-    </LinearLayout>
+    tools:context="agut_giralt.androidpractreversi.activities.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,22 +13,36 @@
         android:gravity="center"
         android:orientation="vertical">
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="180dp"
+            android:src="@drawable/title" />
+
         <Button
             android:id="@+id/btnHelp"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btnHelp" />
+            android:layout_margin="5dp"
+            android:drawableLeft="@drawable/iwcr"
+            android:text="@string/btnHelp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btnInit"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btnInit" />
+            android:layout_margin="5dp"
+            android:drawableLeft="@drawable/igrc"
+            android:text="@string/btnInit"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btnExit"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btnExit" />
+            android:layout_margin="5dp"
+            android:drawableLeft="@drawable/ibcr"
+            android:text="@string/btnExit"
+            android:textStyle="bold" />
     </LinearLayout>
 </LinearLayout>

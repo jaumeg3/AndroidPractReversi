@@ -1,4 +1,4 @@
-package agut_giralt.androidpractreversi;
+package agut_giralt.androidpractreversi.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,7 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-public class help extends AppCompatActivity implements View.OnClickListener {
+import agut_giralt.androidpractreversi.R;
+
+public class ActivityHelp extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

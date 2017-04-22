@@ -1,4 +1,4 @@
-package agut_giralt.androidpractreversi;
+package agut_giralt.androidpractreversi.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+
+import agut_giralt.androidpractreversi.R;
 
 
 public class MainActivity extends AppCompatActivity implements OnClickListener {
@@ -26,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnHelp:
-                Intent intent = new Intent(this, help.class);
+                Intent intent = new Intent(this, ActivityHelp.class);
                 startActivity(intent);
                 finish();
                 break;
