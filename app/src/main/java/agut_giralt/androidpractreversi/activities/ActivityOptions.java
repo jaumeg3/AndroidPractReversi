@@ -12,13 +12,9 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import agut_giralt.androidpractreversi.R;
-import agut_giralt.androidpractreversi.variables;
+import agut_giralt.androidpractreversi.Variables;
 
 public class ActivityOptions extends AppCompatActivity implements View.OnClickListener {
-
-    private EditText player;
-    private RadioButton size;
-    private CheckBox time;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,25 +22,25 @@ public class ActivityOptions extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_options);
         Button startBtn = (Button) findViewById(R.id.startBtn);
         startBtn.setOnClickListener(this);
-        player = (EditText) findViewById(R.id.aliasEditText1);
-        RadioGroup radioGroup = (RadioGroup) findViewById(R.id.size);
-        size = (RadioButton) findViewById(radioGroup.getCheckedRadioButtonId());
-        time = (CheckBox) findViewById(R.id.time);
     }
 
     @Override
     public void onClick(View view) {
+        EditText player = (EditText) findViewById(R.id.aliasEditText1);
+        RadioGroup radioGroup = (RadioGroup) findViewById(R.id.size);
+        RadioButton sizeGrid = (RadioButton) findViewById(radioGroup.getCheckedRadioButtonId());
+        CheckBox time = (CheckBox) findViewById(R.id.time);
         switch (view.getId()) {
             case R.id.startBtn:
                 if (!player.getText().toString().isEmpty()) {
                     Intent intent = new Intent(this, ActivityGame.class);
-                    intent.putExtra(variables.USER, player.getText().toString());
-                    intent.putExtra(variables.SIZE, Integer.parseInt(size.getText().toString()));
-                    intent.putExtra(variables.TIME, time.isChecked());
+                    intent.putExtra(Variables.USER, player.getText().toString());
+                    intent.putExtra(Variables.SIZE, Integer.parseInt(sizeGrid.getText().toString()));
+                    intent.putExtra(Variables.TIME, time.isChecked());
                     startActivity(intent);
                     finish();
                 } else {
-                    Toast.makeText(this, "Please, fill all the fields", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Please, fill username field", Toast.LENGTH_SHORT).show();
                 }
                 break;
         }

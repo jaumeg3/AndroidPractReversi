@@ -4,39 +4,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="agut_giralt.androidpractreversi.help">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp">
-
-        <ImageView
-            android:id="@+id/HelpImg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/home" />
-
-        <TextView
-            android:id="@+id/HelpTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/HelpTitle"
-            android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/title"
-            android:textStyle="bold" />
-    </LinearLayout>
+    tools:context="agut_giralt.androidpractreversi.activities.ActivityHelp">
 
     <TextView
+        android:id="@+id/MainMenuTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Help" />
+        android:drawableLeft="@drawable/ihelp"
+        android:text="@string/HelpTitle"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/title"
+        android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/backBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/backBtn" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:text="@string/help" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:src="@drawable/reversi" />
+
+            <Button
+                android:id="@+id/backBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/colorAccent"
+                android:text="@string/backBtn" />
+        </LinearLayout>
+    </ScrollView>
+
 </LinearLayout>

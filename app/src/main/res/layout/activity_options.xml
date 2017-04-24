@@ -59,19 +59,19 @@
                 android:orientation="horizontal">
 
                 <RadioButton
-                    android:id="@+id/sizeOfTheGrid4"
+                    android:id="@+id/radioButton4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="4" />
 
                 <RadioButton
-                    android:id="@+id/sizeOfTheGrid6"
+                    android:id="@+id/radioButton6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="6" />
 
                 <RadioButton
-                    android:id="@+id/sizeOfTheGrid8"
+                    android:id="@+id/radioButton8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"

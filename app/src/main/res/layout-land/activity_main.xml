@@ -1,56 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="agut_giralt.androidpractreversi.MainActivity">
+    android:background="@drawable/title"
+    tools:context="agut_giralt.androidpractreversi.activities.MainActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp">
+    <TableRow android:layout_weight="1"></TableRow>
 
-        <ImageView
-            android:id="@+id/MainMenuImg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/home" />
-
-        <TextView
-            android:id="@+id/MainMenuTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/MainMenuTitle"
-            android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/title"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <LinearLayout
+    <TableRow
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/btnHelp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:drawableLeft="@drawable/iwcr"
             android:text="@string/btnHelp" />
 
         <Button
             android:id="@+id/btnInit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:drawableLeft="@drawable/igrc"
             android:text="@string/btnInit" />
 
         <Button
             android:id="@+id/btnExit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:drawableLeft="@drawable/ibcr"
             android:text="@string/btnExit" />
-    </LinearLayout>
-</LinearLayout>
+    </TableRow>
+</TableLayout>

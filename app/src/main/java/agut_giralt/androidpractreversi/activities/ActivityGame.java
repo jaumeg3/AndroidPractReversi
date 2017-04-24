@@ -8,7 +8,7 @@ import android.widget.TextView;
 import agut_giralt.androidpractreversi.GameBoard;
 import agut_giralt.androidpractreversi.ImageAdapter;
 import agut_giralt.androidpractreversi.R;
-import agut_giralt.androidpractreversi.variables;
+import agut_giralt.androidpractreversi.Variables;
 
 public class ActivityGame extends AppCompatActivity {
 
@@ -20,7 +20,6 @@ public class ActivityGame extends AppCompatActivity {
 
     private GameBoard gameBoard;
     private GridView board;
-    private ImageAdapter imageAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,26 +27,24 @@ public class ActivityGame extends AppCompatActivity {
         setContentView(R.layout.activity_game);
         getConfiguration();
         if (savedInstanceState == null) initGame();
-        else {
-            getBackState(savedInstanceState);
-        }
+        else getBackState(savedInstanceState);
         initGridView();
     }
 
     private void initGridView() {
-        this.imageAdapter = new ImageAdapter(this, gameBoard, board, player1, SIZE, time,
+        ImageAdapter imageAdapter = new ImageAdapter(this, gameBoard, player1, SIZE, time,
                 cells, timing, score1, score2);
         this.board = (GridView) findViewById(R.id.board);
         this.board.setAdapter(imageAdapter);
-        this.board.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        this.board.setBackgroundColor(getResources().getColor(R.color.board));
         this.board.setNumColumns(SIZE);
     }
 
     private void getBackState(Bundle savedInstanceState) {
-        gameBoard = savedInstanceState.getParcelable(variables.GAMEBOARD);
-        this.player1 = savedInstanceState.getString(variables.USER);
-        this.SIZE = savedInstanceState.getInt(variables.SIZE);
-        this.time = savedInstanceState.getBoolean(variables.TIME);
+        gameBoard = savedInstanceState.getParcelable(Variables.GAMEBOARD);
+        this.player1 = savedInstanceState.getString(Variables.USER);
+        this.SIZE = savedInstanceState.getInt(Variables.SIZE);
+        this.time = savedInstanceState.getBoolean(Variables.TIME);
     }
 
     private void initGame() {
@@ -56,9 +53,9 @@ public class ActivityGame extends AppCompatActivity {
     }
 
     private void getConfiguration() {
-        player1 = getIntent().getStringExtra(variables.USER);
-        SIZE = getIntent().getIntExtra(variables.SIZE, 4);
-        time = getIntent().getBooleanExtra(variables.TIME, false);
+        player1 = getIntent().getStringExtra(Variables.USER);
+        SIZE = getIntent().getIntExtra(Variables.SIZE, 4);
+        time = getIntent().getBooleanExtra(Variables.TIME, false);
         cells = (TextView) findViewById(R.id.cells);
         timing = (TextView) findViewById(R.id.timing);
         score1 = (TextView) findViewById(R.id.score1);
@@ -68,11 +65,9 @@ public class ActivityGame extends AppCompatActivity {
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putParcelable(variables.GAMEBOARD, gameBoard);
-        outState.putString(variables.USER, player1);
-        outState.putInt(variables.SIZE, SIZE);
-        outState.putBoolean(variables.TIME, time);
+        outState.putParcelable(Variables.GAMEBOARD, gameBoard);
+        outState.putString(Variables.USER, player1);
+        outState.putInt(Variables.SIZE, SIZE);
+        outState.putBoolean(Variables.TIME, time);
     }
-
-
 }
