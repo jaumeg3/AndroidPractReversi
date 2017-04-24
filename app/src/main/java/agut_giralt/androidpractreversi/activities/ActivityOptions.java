@@ -12,7 +12,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import agut_giralt.androidpractreversi.R;
-import agut_giralt.androidpractreversi.Variables;
+import agut_giralt.androidpractreversi.utils.Variables;
 
 public class ActivityOptions extends AppCompatActivity implements View.OnClickListener {
 

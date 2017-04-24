@@ -1,6 +1,8 @@
-package agut_giralt.androidpractreversi;
+package agut_giralt.androidpractreversi.utils;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -9,15 +11,18 @@ import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import agut_giralt.androidpractreversi.R;
+import agut_giralt.androidpractreversi.activities.ActivityResult;
+
 
 /**
- * Created by jaume on 19/04/17.
+ * Created by Jaume on 19/04/17.
  *
  */
 
 public class ImageAdapter extends BaseAdapter {
 
-    private Context mContext;
+    private Activity mContext;
     private GameBoard gameBoard;
     private TextView cells, timing, score1, score2;
     private boolean withTime;
@@ -26,9 +31,11 @@ public class ImageAdapter extends BaseAdapter {
     private int TIME = 40;
     private int timeLeft;
     private boolean posible = false;
+    private boolean intelligenceActivated = true; // Ho hem preparat per a que puguin jugar 2 jugadors
+    private ArtificialIntelligence ia;
 
 
-    public ImageAdapter(Context c, GameBoard gameBoard, String alias, int size,
+    public ImageAdapter(Activity c, GameBoard gameBoard, String alias, int size,
                         boolean withTime, TextView cells, TextView timing, TextView score1,
                         TextView score2) {
         mContext = c;
@@ -42,7 +49,12 @@ public class ImageAdapter extends BaseAdapter {
         this.score2 = score2;
         updateTextViews();
         this.timeLeft = TIME;
-        //updateTime();
+        updateTime();
+        this.ia = new ArtificialIntelligence(this.SIZE);
+    }
+
+    private void updateTime() {
+        timing.setText(String.valueOf(gameBoard.getTime()));
     }
 
     @Override
@@ -65,8 +77,17 @@ public class ImageAdapter extends BaseAdapter {
         Button btn;
         if (convertView == null) {
             btn = new Button(mContext);
-            btn.setLayoutParams(new GridView.LayoutParams(100, 100));
-            btn.setPadding(5, 5, 5, 5);
+            if (getCount() == 64) {
+                btn.setLayoutParams(new GridView.LayoutParams(45, 45));
+                btn.setPadding(5, 5, 5, 5);
+            } else if (getCount() == 36) {
+                btn.setLayoutParams(new GridView.LayoutParams(60, 60));
+                btn.setPadding(5, 5, 5, 5);
+            } else {
+                btn.setLayoutParams(new GridView.LayoutParams(100, 100));
+                btn.setPadding(5, 5, 5, 5);
+            }
+
         } else {
             btn = (Button) convertView;
         }
@@ -94,7 +115,18 @@ public class ImageAdapter extends BaseAdapter {
                 gameBoard.getPositionsComputer().size()));
         this.score1.setText(String.valueOf(gameBoard.getPositionsUser().size()));
         this.score2.setText(String.valueOf(gameBoard.getPositionsComputer().size()));
-        this.timing.setText(String.valueOf(gameBoard.getTurn()));
+    }
+
+    private void createNewActivity() {
+        Intent intent = new Intent(mContext, ActivityResult.class);
+        intent.putExtra(Variables.USER, alias);
+        intent.putExtra(Variables.TIME, withTime);
+        intent.putExtra(Variables.TIME_LEFT, timeLeft);
+        intent.putExtra(Variables.PLAYER1_SCORE, Integer.parseInt(score1.getText().toString()));
+        intent.putExtra(Variables.PLAYER2_SCORE, Integer.parseInt(score2.getText().toString()));
+        intent.putExtra(Variables.SIZE, SIZE);
+        mContext.startActivity(intent);
+        mContext.finish();
     }
 
     private class MyOnClickListener implements View.OnClickListener {
@@ -109,27 +141,29 @@ public class ImageAdapter extends BaseAdapter {
         public void onClick(View v) {
             if (gameBoard.getPositionsPossibleCells().contains(position)) {
                 doTheMovement(position);
+                if (intelligenceActivated && gameBoard.getPositionsPossibleCells().size() > 0) {
+                    doTheMovement(ia.getBestMovement(gameBoard.getPositionsPossibleCells()));
+                }
             } else {
                 Toast.makeText(context, "Invalid Movement. Try again", Toast.LENGTH_SHORT).show();
             }
         }
 
         private void doTheMovement(int position) {
-            if (withTime) {
-                Toast.makeText(context, "T", Toast.LENGTH_SHORT).show();
-            }
             fillTheCells(position);
             gameBoard.changeTurn();
             gameBoard.getPositionsPossible();
-            updateTextViews();
-            notifyDataSetChanged();
+            update();
             if (isFinal()) {
                 Toast.makeText(context, "Final", Toast.LENGTH_SHORT).show();
                 createNewActivity();
             }
         }
 
-        private void createNewActivity() {
+        private void update() {
+            updateTextViews();
+            updateTime();
+            notifyDataSetChanged();
         }
 
         private void fillTheCells(int position) {
@@ -140,8 +174,11 @@ public class ImageAdapter extends BaseAdapter {
         }
 
         private boolean isFinal() {
-            if (gameBoard.isEnd()) return true;
-            if (gameBoard.getPositionsPossibleCells().isEmpty() && posible) {
+            if (gameBoard.isEnd()) {
+                return true;
+            } else if (gameBoard.timeEnd) {
+                return true;
+            } else if (gameBoard.getPositionsPossibleCells().isEmpty() && posible) {
                 return true;
             } else if (gameBoard.getPositionsPossibleCells().isEmpty()) {
                 gameBoard.changeTurn();
@@ -154,7 +191,5 @@ public class ImageAdapter extends BaseAdapter {
                 return false;
             }
         }
-
-
     }
 }

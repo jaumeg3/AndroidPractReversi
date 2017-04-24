@@ -45,6 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/gameTop"
         android:layout_margin="10dp"
+        android:background="@color/colorBackground"
         android:padding="10dp">
 
         <GridView

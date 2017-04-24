@@ -1,8 +1,7 @@
-package agut_giralt.androidpractreversi;
+package agut_giralt.androidpractreversi.utils;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,7 +9,6 @@ import java.util.List;
 
 /**
  * Created by jaume on 20/04/17.
- *
  */
 
 public class GameBoard implements Parcelable {
@@ -25,6 +23,7 @@ public class GameBoard implements Parcelable {
             return new GameBoard[size];
         }
     };
+    boolean timeEnd = false;
     // CELL FREE = 0 / CELL PLAYER = 1 / CELL COMPUTER = 2
     private int turn = 1;
     private int size;
@@ -33,6 +32,7 @@ public class GameBoard implements Parcelable {
     private List<Integer> ComputerCells;
     private List<Integer> PossibleCells = new ArrayList<>();
     private HashMap<Integer, List<Integer>> cellsToChange = new HashMap<>();
+    private CountDown timer;
 
     public GameBoard(int size) {
         this.size = size;
@@ -44,7 +44,7 @@ public class GameBoard implements Parcelable {
         size = in.readInt();
     }
 
-    public void initGameBoard() {
+    public void initGameBoard(boolean withTime, int time) {
         UserCells = new ArrayList<>();
         ComputerCells = new ArrayList<>();
         for (int x = 0; x < this.size; x++) {
@@ -54,6 +54,10 @@ public class GameBoard implements Parcelable {
         }
         firstMoves();
         getPositionsPossible();
+        if (withTime) {
+            timer = new CountDown(time * Variables.SEGON, Variables.SEGON, this);
+            timer.start();
+        }
     }
 
     private void firstMoves() {
@@ -69,19 +73,14 @@ public class GameBoard implements Parcelable {
     }
 
     void fillCell(int position) {
-        Log.d("position", String.valueOf(position));
         if (this.turn == 1) {
             if (this.ComputerCells.contains(position)) {
-                Log.d("ComputerCell", ComputerCells.toString());
                 this.ComputerCells.remove(ComputerCells.indexOf(position));
-                Log.d("ComputerCell", ComputerCells.toString());
             }
-            Log.d("UserCell", UserCells.toString());
             if (!this.UserCells.contains(position)) {
                 this.UserCells.add(position);
                 gameBoard[position / size][position % size] = Variables.PLAYER1;
             }
-            Log.d("UserCell", UserCells.toString());
         } else {
             if (this.UserCells.contains(position)) {
                 this.UserCells.remove(UserCells.indexOf(position));
@@ -115,12 +114,11 @@ public class GameBoard implements Parcelable {
     }
 
     List<Integer> getCellsToChange(int position) {
-        Log.d("change", cellsToChange.toString());
         return cellsToChange.get(position);
     }
 
-    int getTurn() {
-        return this.turn;
+    int getTime() {
+        return (int) timer.getTime();
     }
 
     List<Integer> getPositionsPossibleCells() {
@@ -130,12 +128,10 @@ public class GameBoard implements Parcelable {
     void getPositionsPossible() {
         PossibleCells.clear();
         cellsToChange.clear();
-        Log.d("change1", cellsToChange.toString());
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 if (isValidMovement(i, j, turn)) {
                     PossibleCells.add((i * size) + j);
-                    Log.d("cells", PossibleCells.toString());
                 }
             }
         }
@@ -194,11 +190,9 @@ public class GameBoard implements Parcelable {
         boolean condition1 = gameBoard[row - 1][column - 1] == otherPlayer();
         boolean condition2 = false;
         List<Integer> path = new ArrayList<>();
-        Log.d("path1", path.toString());
         boolean find = false;
         for (int x = row, y = column; x >= 0 && y >= 0 && !find; x--, y--) {
             path.add(x * size + y);
-            Log.d("path", path.toString());
             if (gameBoard[x][y] == player && condition1) {
                 condition2 = true;
                 createPath(path, row * size + column);
@@ -329,9 +323,6 @@ public class GameBoard implements Parcelable {
         }
     }
 
-    //For save and recuperate the instances
-    //http://androcode.es/2012/12/trabajando-con-parcelables/
-
     private List<Integer> joinList(List<Integer> data, List<Integer> path) {
         for (int x = 0; x < path.size(); x++) {
             if (!data.contains(x)) {
@@ -343,7 +334,11 @@ public class GameBoard implements Parcelable {
 
     boolean isEnd() {
         return size * size - getPositionsUser().size() - getPositionsComputer().size() == 0;
+
     }
+
+    //For save and recuperate the instances
+    //http://androcode.es/2012/12/trabajando-con-parcelables/
 
     @Override
     public int describeContents() {

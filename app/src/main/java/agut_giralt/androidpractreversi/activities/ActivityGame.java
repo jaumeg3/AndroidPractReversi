@@ -5,16 +5,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.GridView;
 import android.widget.TextView;
 
-import agut_giralt.androidpractreversi.GameBoard;
-import agut_giralt.androidpractreversi.ImageAdapter;
 import agut_giralt.androidpractreversi.R;
-import agut_giralt.androidpractreversi.Variables;
+import agut_giralt.androidpractreversi.utils.GameBoard;
+import agut_giralt.androidpractreversi.utils.ImageAdapter;
+import agut_giralt.androidpractreversi.utils.Variables;
 
 public class ActivityGame extends AppCompatActivity {
 
     private int SIZE;
     private boolean time;
     private String player1;
+    private int countDown = 40;
 
     private TextView cells, timing, score1, score2;
 
@@ -49,7 +50,7 @@ public class ActivityGame extends AppCompatActivity {
 
     private void initGame() {
         gameBoard = new GameBoard(SIZE);
-        gameBoard.initGameBoard();
+        gameBoard.initGameBoard(time, countDown);
     }
 
     private void getConfiguration() {
