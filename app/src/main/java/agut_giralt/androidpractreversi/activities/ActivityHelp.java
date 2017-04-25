@@ -8,6 +8,10 @@ import android.widget.Button;
 
 import agut_giralt.androidpractreversi.R;
 
+/**
+ * Created by Nil Agut and Jaume Giralt.
+ */
+
 public class ActivityHelp extends AppCompatActivity implements View.OnClickListener {
 
     @Override

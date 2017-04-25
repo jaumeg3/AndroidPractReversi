@@ -3,7 +3,7 @@ package agut_giralt.androidpractreversi.utils;
 import android.os.CountDownTimer;
 
 /**
- * Created by Jaume on 24/04/17.
+ * Created by Nil Agut and Jaume Giralt.
  */
 
 class CountDown extends CountDownTimer {

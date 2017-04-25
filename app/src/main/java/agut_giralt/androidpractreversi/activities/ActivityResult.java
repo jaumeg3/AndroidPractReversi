@@ -10,6 +10,10 @@ import java.util.Date;
 import agut_giralt.androidpractreversi.R;
 import agut_giralt.androidpractreversi.utils.Variables;
 
+/**
+ * Created by Nil Agut and Jaume Giralt.
+ */
+
 public class ActivityResult extends AppCompatActivity {
 
     private int size;

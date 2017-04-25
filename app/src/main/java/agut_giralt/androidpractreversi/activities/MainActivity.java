@@ -9,6 +9,9 @@ import android.widget.Button;
 
 import agut_giralt.androidpractreversi.R;
 
+/**
+ * Created by Nil Agut and Jaume Giralt.
+ */
 
 public class MainActivity extends AppCompatActivity implements OnClickListener {
 

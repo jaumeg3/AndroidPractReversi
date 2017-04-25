@@ -14,6 +14,10 @@ import android.widget.Toast;
 import agut_giralt.androidpractreversi.R;
 import agut_giralt.androidpractreversi.utils.Variables;
 
+/**
+ * Created by Nil Agut and Jaume Giralt.
+ */
+
 public class ActivityOptions extends AppCompatActivity implements View.OnClickListener {
 
     @Override

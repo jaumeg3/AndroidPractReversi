@@ -10,6 +10,10 @@ import agut_giralt.androidpractreversi.utils.GameBoard;
 import agut_giralt.androidpractreversi.utils.ImageAdapter;
 import agut_giralt.androidpractreversi.utils.Variables;
 
+/**
+ * Created by Nil Agut and Jaume Giralt.
+ */
+
 public class ActivityGame extends AppCompatActivity {
 
     private int SIZE;

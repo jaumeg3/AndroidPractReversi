@@ -16,8 +16,7 @@ import agut_giralt.androidpractreversi.activities.ActivityResult;
 
 
 /**
- * Created by Jaume on 19/04/17.
- *
+ * Created by Nil Agut and Jaume Giralt.
  */
 
 public class ImageAdapter extends BaseAdapter {
@@ -31,7 +30,7 @@ public class ImageAdapter extends BaseAdapter {
     private int TIME = 40;
     private int timeLeft;
     private boolean posible = false;
-    private boolean intelligenceActivated = true; // Ho hem preparat per a que puguin jugar 2 jugadors
+    private boolean intelligenceActivated = false; // Ho hem preparat per a que puguin jugar 2 jugadors
     private ArtificialIntelligence ia;
 
 

@@ -3,7 +3,7 @@ package agut_giralt.androidpractreversi.utils;
 import java.util.List;
 
 /**
- * Created by jaume on 24/04/17.
+ * Created by Nil Agut and Jaume Giralt.
  */
 
 class ArtificialIntelligence {

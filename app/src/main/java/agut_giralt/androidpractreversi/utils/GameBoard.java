@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Created by jaume on 20/04/17.
+ * Created by Nil Agut and Jaume Giralt.
  */
 
 public class GameBoard implements Parcelable {
@@ -334,7 +334,6 @@ public class GameBoard implements Parcelable {
 
     boolean isEnd() {
         return size * size - getPositionsUser().size() - getPositionsComputer().size() == 0;
-
     }
 
     //For save and recuperate the instances
