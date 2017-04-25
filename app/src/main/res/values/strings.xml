@@ -1,10 +1,8 @@
 <resources>
     <string name="app_name">Reversi Revolution Game</string>
-    <string name="MainMenuTitle">Main Menu</string>
     <string name="btnHelp">Help</string>
     <string name="btnInit">Init Game</string>
     <string name="btnExit">Exit</string>
-    <string name="title_activity_help">help</string>
 
     <!--- Help Activity -->
     <string name="HelpTitle">Help</string>
@@ -24,9 +22,8 @@
     <string name="date">Date and time of the game</string>
     <string name="resume">Log of the game</string>
     <string name="email">E-Mail to send the log</string>
-    <string name="score">NA</string>
-    <string name="user">You</string>
-    <string name="ia">Device</string>
+    <string name="user">You: </string>
+    <string name="ia">Device: </string>
     <string name="cellsToFinish">Cells to finish:</string>
 
     <!--- Help Activity -->
@@ -43,6 +40,8 @@
     <string name="Time">No more time! </string>
     <string name="You">You:</string>
     <string name="Player2">Your Oponent:</string>
+    <string name="sendResults">Send the results</string>
+    <string name="subject">Results of the game - Revolution Reversi</string>
 
 
 </resources>

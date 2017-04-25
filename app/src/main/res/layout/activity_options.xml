@@ -29,7 +29,6 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/name_config"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/home"
@@ -43,7 +42,6 @@
                 android:hint="@string/optionsHint1" />
 
             <TextView
-                android:id="@+id/OptionsText2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="2dp"
@@ -80,7 +78,6 @@
             </RadioGroup>
 
             <TextView
-                android:id="@+id/OptionsText3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="2dp"

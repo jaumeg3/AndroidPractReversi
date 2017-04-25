@@ -23,13 +23,13 @@ public class ImageAdapter extends BaseAdapter {
 
     private Activity mContext;
     private GameBoard gameBoard;
-    private TextView cells, timing, score1, score2;
+    private TextView cells, score1, score2;
+    private TextView timing;
     private boolean withTime;
     private int SIZE;
     private String alias;
     private int TIME = 40;
     private long timeLeft;
-    private boolean posible = false;
     private boolean intelligenceActivated = true; // Ho hem preparat per a que puguin jugar 2 jugadors simultaniament
     private ArtificialIntelligence ia;
 
@@ -57,14 +57,14 @@ public class ImageAdapter extends BaseAdapter {
     }
 
     private void chrono() {
-        timeLeft = System.currentTimeMillis();
+        timeLeft = System.currentTimeMillis() / Variables.SEGON;
     }
 
     private void updateTime() {
         if (withTime) {
-            timing.setText(String.valueOf(gameBoard.getTime()));
+            timing.setText(String.valueOf(gameBoard.getTime() / Variables.SEGON));
         } else {
-            timing.setText(String.valueOf(timeLeft));
+            timing.setText(String.valueOf((System.currentTimeMillis() / Variables.SEGON) - timeLeft));
         }
     }
 
@@ -111,13 +111,13 @@ public class ImageAdapter extends BaseAdapter {
 
     private int setPiece(int position) {
         if (gameBoard.getPositionsUser().contains(position)) {
-            return R.drawable.bcr;
+            return R.drawable.bgp;
         } else if (gameBoard.getPositionsComputer().contains(position)) {
-            return R.drawable.wcr;
+            return R.drawable.wgp;
         } else if (gameBoard.getPositionsPossibleCells().contains(position)) {
-            return R.drawable.grc;
+            return R.drawable.pgt;
         } else {
-            return R.drawable.wsq;
+            return R.drawable.gsq;
         }
     }
 
@@ -129,10 +129,15 @@ public class ImageAdapter extends BaseAdapter {
     }
 
     private void createNewActivity() {
+        if (withTime) {
+            timeLeft = gameBoard.getTime() / Variables.SEGON;
+        } else {
+            timeLeft = System.currentTimeMillis() / Variables.SEGON - timeLeft;
+        }
         Intent intent = new Intent(mContext, ActivityResult.class);
         intent.putExtra(Variables.USER, alias);
         intent.putExtra(Variables.TIME, withTime);
-        intent.putExtra(Variables.TIME_LEFT, timeLeft);
+        intent.putExtra(Variables.TIME_LEFT, (int) timeLeft);
         intent.putExtra(Variables.PLAYER1_SCORE, Integer.parseInt(score1.getText().toString()));
         intent.putExtra(Variables.PLAYER2_SCORE, Integer.parseInt(score2.getText().toString()));
         intent.putExtra(Variables.SIZE, SIZE);
@@ -186,22 +191,16 @@ public class ImageAdapter extends BaseAdapter {
 
         private boolean isFinal() {
             if (gameBoard.isEnd()) {
-                //Log.d("Final","No hay mas Casilla");
                 return true;
             } else {
                 if (gameBoard.timeEnd) {
-                    //Log.d("Final","No hay mas tiempo");
                     return true;
                 } else if (gameBoard.getPositionsPossibleCells().size() == 0) {
-                    //Log.d("Final","No hay mas Casillas Possibles 1");
                     gameBoard.changeTurn();
                     gameBoard.getPositionsPossible();
                     notifyDataSetChanged();
-                    //Log.d("Final","No hay mas Casillas Possibles 2");
-//Log.d("Final","Hay mas Casillas Possibles 1");
                     return gameBoard.getPositionsPossibleCells().size() == 0;
                 } else {
-                    //Log.d("Final","ELSE");
                     return false;
                 }
             }
