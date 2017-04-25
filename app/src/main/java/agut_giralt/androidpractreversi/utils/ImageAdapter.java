@@ -28,7 +28,7 @@ public class ImageAdapter extends BaseAdapter {
     private int SIZE;
     private String alias;
     private int TIME = 40;
-    private int timeLeft;
+    private long timeLeft;
     private boolean posible = false;
     private boolean intelligenceActivated = false; // Ho hem preparat per a que puguin jugar 2 jugadors
     private ArtificialIntelligence ia;
@@ -47,13 +47,25 @@ public class ImageAdapter extends BaseAdapter {
         this.score1 = score1;
         this.score2 = score2;
         updateTextViews();
-        this.timeLeft = TIME;
-        updateTime();
+        if (this.withTime) {
+            this.timeLeft = TIME;
+            updateTime();
+        } else {
+            chrono();
+        }
         this.ia = new ArtificialIntelligence(this.SIZE);
     }
 
+    private void chrono() {
+        timeLeft = System.currentTimeMillis();
+    }
+
     private void updateTime() {
-        timing.setText(String.valueOf(gameBoard.getTime()));
+        if (withTime) {
+            timing.setText(String.valueOf(gameBoard.getTime()));
+        } else {
+            timing.setText(String.valueOf(timeLeft));
+        }
     }
 
     @Override

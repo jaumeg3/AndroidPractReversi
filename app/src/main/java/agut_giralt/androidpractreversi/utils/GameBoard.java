@@ -191,12 +191,15 @@ public class GameBoard implements Parcelable {
         boolean condition2 = false;
         List<Integer> path = new ArrayList<>();
         boolean find = false;
-        for (int x = row, y = column; x >= 0 && y >= 0 && !find; x--, y--) {
+        path.add(row * size + column);
+        for (int x = row - 1, y = column - 1; x >= 0 && y >= 0 && !find; x--, y--) {
             path.add(x * size + y);
             if (gameBoard[x][y] == player && condition1) {
                 condition2 = true;
                 createPath(path, row * size + column);
                 find = true;
+            } else if (gameBoard[x][y] == 0) {
+                break;
             }
         }
         return condition1 && condition2;
@@ -207,12 +210,15 @@ public class GameBoard implements Parcelable {
         boolean condition2 = false;
         List<Integer> path = new ArrayList<>();
         boolean find = false;
-        for (int x = row, y = column; x >= 0 && y < size && !find; x--, y++) {
+        path.add(row * size + column);
+        for (int x = row - 1, y = column + 1; x >= 0 && y < size && !find; x--, y++) {
             path.add(x * size + y);
             if (gameBoard[x][y] == player && condition1) {
                 condition2 = true;
                 createPath(path, row * size + column);
                 find = true;
+            } else if (gameBoard[x][y] == 0) {
+                break;
             }
         }
         return condition1 && condition2;
@@ -223,12 +229,15 @@ public class GameBoard implements Parcelable {
         boolean condition2 = false;
         List<Integer> path = new ArrayList<>();
         boolean find = false;
-        for (int x = row; x >= 0 && !find; x--) {
+        path.add(row * size + column);
+        for (int x = row - 1; x >= 0 && !find; x--) {
             path.add(x * size + column);
             if (gameBoard[x][column] == player && condition1) {
                 condition2 = true;
                 createPath(path, row * size + column);
                 find = true;
+            } else if (gameBoard[x][column] == 0) {
+                break;
             }
         }
         return condition1 && condition2;
@@ -239,12 +248,15 @@ public class GameBoard implements Parcelable {
         boolean condition2 = false;
         List<Integer> path = new ArrayList<>();
         boolean find = false;
-        for (int x = row, y = column; x < size && y >= 0 && !find; x++, y--) {
+        path.add(row * size + column);
+        for (int x = row + 1, y = column - 1; x < size && y >= 0 && !find; x++, y--) {
             path.add(x * size + y);
             if (gameBoard[x][y] == player && condition1) {
                 condition2 = true;
                 createPath(path, row * size + column);
                 find = true;
+            } else if (gameBoard[x][y] == 0) {
+                break;
             }
         }
         return condition1 && condition2;
@@ -255,12 +267,15 @@ public class GameBoard implements Parcelable {
         boolean condition2 = false;
         List<Integer> path = new ArrayList<>();
         boolean find = false;
-        for (int y = column; y >= 0 && !find; y--) {
+        path.add(row * size + column);
+        for (int y = column - 1; y >= 0 && !find; y--) {
             path.add(row * size + y);
             if (gameBoard[row][y] == player && condition1) {
                 condition2 = true;
                 createPath(path, row * size + column);
                 find = true;
+            } else if (gameBoard[row][y] == 0) {
+                break;
             }
         }
         return condition1 && condition2;
@@ -271,12 +286,15 @@ public class GameBoard implements Parcelable {
         boolean condition2 = false;
         List<Integer> path = new ArrayList<>();
         boolean find = false;
-        for (int x = row; x < size && !find; x++) {
+        path.add(row * size + column);
+        for (int x = row + 1; x < size && !find; x++) {
             path.add(x * size + column);
             if (gameBoard[x][column] == player && condition1) {
                 condition2 = true;
                 createPath(path, row * size + column);
                 find = true;
+            } else if (gameBoard[x][column] == 0) {
+                break;
             }
         }
         return condition1 && condition2;
@@ -287,12 +305,15 @@ public class GameBoard implements Parcelable {
         boolean condition2 = false;
         List<Integer> path = new ArrayList<>();
         boolean find = false;
-        for (int x = row, y = column; x < size && y > size && !find; x++, y++) {
+        path.add(row * size + column);
+        for (int x = row + 1, y = column + 1; x < size && y > size && !find; x++, y++) {
             path.add(x * size + y);
             if (gameBoard[x][y] == player && condition1) {
                 condition2 = true;
                 createPath(path, row * size + column);
                 find = true;
+            } else if (gameBoard[x][y] == 0) {
+                break;
             }
         }
         return condition1 && condition2;
@@ -303,12 +324,15 @@ public class GameBoard implements Parcelable {
         boolean condition2 = false;
         List<Integer> path = new ArrayList<>();
         boolean find = false;
-        for (int y = column; y < size && !find; y++) {
+        path.add(row * size + column);
+        for (int y = column + 1; y < size && !find; y++) {
             path.add(row * size + y);
             if (gameBoard[row][y] == player && condition1) {
                 condition2 = true;
                 createPath(path, row * size + column);
                 find = true;
+            } else if (gameBoard[row][y] == 0) {
+                break;
             }
         }
         return condition1 && condition2;
