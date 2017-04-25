@@ -29,7 +29,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableLeft="@drawable/cronometre"
-            android:text="@string/time" />
+            android:text="@string/time"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/timing"
@@ -77,7 +79,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="50"
                 android:drawableLeft="@drawable/ibcr"
-                android:text="@string/user" />
+                android:text="@string/user"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/score1"
@@ -89,7 +93,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="50"
                 android:drawableLeft="@drawable/iwcr"
-                android:text="@string/ia" />
+                android:text="@string/ia"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/score2"

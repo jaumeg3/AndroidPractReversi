@@ -63,6 +63,7 @@ public class ImageAdapter extends BaseAdapter {
     private void updateTime() {
         if (withTime) {
             timing.setText(String.valueOf(gameBoard.getTime() / Variables.SEGON));
+            timing.setTextColor(mContext.getResources().getColor(R.color.colorAccent));
         } else {
             timing.setText(String.valueOf((System.currentTimeMillis() / Variables.SEGON) - timeLeft));
         }
