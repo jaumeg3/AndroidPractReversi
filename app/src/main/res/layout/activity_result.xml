@@ -9,6 +9,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/grafic"
         android:text="@string/ResultsTitle"
         android:textColor="@color/colorPrimary"
         android:textSize="@dimen/title"

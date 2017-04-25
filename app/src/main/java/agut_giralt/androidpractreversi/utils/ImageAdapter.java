@@ -163,7 +163,6 @@ public class ImageAdapter extends BaseAdapter {
             gameBoard.getPositionsPossible();
             update();
             if (isFinal()) {
-                Toast.makeText(context, "Final", Toast.LENGTH_SHORT).show();
                 createNewActivity();
             }
         }

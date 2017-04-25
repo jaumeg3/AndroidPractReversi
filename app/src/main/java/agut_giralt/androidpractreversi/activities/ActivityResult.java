@@ -4,8 +4,14 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Date;
@@ -40,6 +46,12 @@ public class ActivityResult extends AppCompatActivity implements View.OnClickLis
         email = (EditText) findViewById(R.id.email);
         getIntentValues(intent);
         setEditTexts();
+        Button exit = (Button) findViewById(R.id.ResultExitButton);
+        exit.setOnClickListener(this);
+        Button newGame = (Button) findViewById(R.id.ResultNewButton);
+        newGame.setOnClickListener(this);
+        Button send = (Button) findViewById(R.id.resultButton);
+        send.setOnClickListener(this);
     }
 
     private void setEditTexts() {
@@ -60,6 +72,7 @@ public class ActivityResult extends AppCompatActivity implements View.OnClickLis
                     " " + getString(R.string.Player2) + String.valueOf(score2) + "." +
                     Math.abs(score1 - score2) + getString(R.string.Difference) + "." +
                     Math.abs((score1 + score2) - size * size) + " " + getString(R.string.Left) + moreLog);
+            createToast(R.string.Time, R.drawable.conometroblanc);
         } else if (score1 > score2) {
             resume.setText(getString(R.string.Alias) + alias + ". " +
                     getString(R.string.SizeOfTheGrid) + String.valueOf(size) + ".\n" +
@@ -67,6 +80,7 @@ public class ActivityResult extends AppCompatActivity implements View.OnClickLis
                     " " + getString(R.string.Player2) + String.valueOf(score2) + "." +
                     Math.abs(score1 - score2) + getString(R.string.Difference) + "." +
                     Math.abs((score1 + score2) - size * size) + " " + getString(R.string.Left) + moreLog);
+            createToast(R.string.Win, R.drawable.copa);
         } else if (score2 > score1) {
             resume.setText(getString(R.string.Alias) + alias + ". " +
                     getString(R.string.SizeOfTheGrid) + String.valueOf(size) + ".\n" +
@@ -74,6 +88,7 @@ public class ActivityResult extends AppCompatActivity implements View.OnClickLis
                     " " + getString(R.string.Player2) + String.valueOf(score2) + "." +
                     Math.abs(score1 - score2) + getString(R.string.Difference) + "." +
                     Math.abs((score1 + score2) - size * size) + " " + getString(R.string.Left) + moreLog);
+            createToast(R.string.Lose, R.drawable.caca);
         } else if (score1 == score2) {
             resume.setText(getString(R.string.Alias) + alias + ". " +
                     getString(R.string.SizeOfTheGrid) + String.valueOf(size) + ".\n" +
@@ -81,13 +96,15 @@ public class ActivityResult extends AppCompatActivity implements View.OnClickLis
                     " " + getString(R.string.Player2) + String.valueOf(score2) + "." +
                     Math.abs(score1 - score2) + getString(R.string.Difference) + "." +
                     Math.abs((score1 + score2) - size * size) + " " + getString(R.string.Left) + moreLog);
+            createToast(R.string.Draw, R.drawable.empate);
         } else if (score1 == score2 && timeLeft > 0) {
             resume.setText(getString(R.string.Alias) + alias + ". " +
                     getString(R.string.SizeOfTheGrid) + String.valueOf(size) + ".\n" +
-                    getString(R.string.Time) + getString(R.string.You) + String.valueOf(score1) +
+                    getString(R.string.Encallat) + getString(R.string.You) + String.valueOf(score1) +
                     " " + getString(R.string.Player2) + String.valueOf(score2) + "." +
                     Math.abs(score1 - score2) + getString(R.string.Difference) + "." +
                     Math.abs((score1 + score2) - size * size) + " " + getString(R.string.Left) + moreLog);
+            createToast(R.string.Encallat, R.drawable.stop);
         }
     }
 
@@ -98,6 +115,23 @@ public class ActivityResult extends AppCompatActivity implements View.OnClickLis
         score1 = intent.getIntExtra(Variables.PLAYER1_SCORE, 0);
         score2 = intent.getIntExtra(Variables.PLAYER2_SCORE, 0);
         alias = intent.getStringExtra(Variables.USER);
+    }
+
+    private void createToast(int resourceText, int resourceImage) {
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.toast,
+                (ViewGroup) findViewById(R.id.toast_layout_root));
+
+        ImageView image = (ImageView) layout.findViewById(R.id.ToastImage);
+        image.setImageResource(resourceImage);
+        TextView text = (TextView) layout.findViewById(R.id.ToastText);
+        text.setText(resourceText);
+
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
+        toast.show();
     }
 
     @Override

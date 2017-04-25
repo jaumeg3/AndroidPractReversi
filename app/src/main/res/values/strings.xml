@@ -42,6 +42,7 @@
     <string name="Player2">Your Oponent: </string>
     <string name="sendResults">Send the results</string>
     <string name="subject">Results of the game - Revolution Reversi</string>
+    <string name="Encallat">You are blocked!!</string>
 
 
 </resources>
