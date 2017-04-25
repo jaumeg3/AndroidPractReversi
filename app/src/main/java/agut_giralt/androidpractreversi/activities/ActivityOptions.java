@@ -16,6 +16,9 @@ import agut_giralt.androidpractreversi.utils.Variables;
 
 /**
  * Created by Nil Agut and Jaume Giralt.
+ *
+ * Els comentaris han sigut un intent de fer que la layout fos visible i invisible un Edit Text per
+ * jugar 2 persones en un mateix dispositiu. En la següent entrega esperem implementar-ho.
  */
 
 public class ActivityOptions extends AppCompatActivity implements View.OnClickListener {
@@ -34,6 +37,9 @@ public class ActivityOptions extends AppCompatActivity implements View.OnClickLi
         RadioGroup radioGroup = (RadioGroup) findViewById(R.id.size);
         RadioButton sizeGrid = (RadioButton) findViewById(radioGroup.getCheckedRadioButtonId());
         CheckBox time = (CheckBox) findViewById(R.id.time);
+        //RadioButton OnePlayer = (RadioButton) findViewById(R.id.OnePlayer);
+        //RadioButton TwoPlayers = (RadioButton) findViewById(R.id.TwoPlayers);
+        //EditText editText2 = (EditText) findViewById(R.id.aliasEditText2);
         switch (view.getId()) {
             case R.id.startBtn:
                 if (!player.getText().toString().isEmpty()) {
@@ -48,5 +54,11 @@ public class ActivityOptions extends AppCompatActivity implements View.OnClickLi
                 }
                 break;
         }
+        /*
+        if (OnePlayer.isChecked()) {
+            editText2.setVisibility(View.INVISIBLE);
+        } else if (TwoPlayers.isChecked()) {
+            editText2.setVisibility(View.VISIBLE);
+        } */
     }
 }
