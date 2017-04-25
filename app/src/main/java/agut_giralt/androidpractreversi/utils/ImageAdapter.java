@@ -28,8 +28,6 @@ public class ImageAdapter extends BaseAdapter {
     private boolean withTime;
     private int SIZE;
     private String alias;
-    private int TIME = 40;
-    private long timeLeft;
     private boolean intelligenceActivated = true; // Ho hem preparat per a que puguin jugar 2 jugadors simultaniament
     private ArtificialIntelligence ia;
 
@@ -47,17 +45,8 @@ public class ImageAdapter extends BaseAdapter {
         this.score1 = score1;
         this.score2 = score2;
         updateTextViews();
-        if (this.withTime) {
-            this.timeLeft = TIME;
-            updateTime();
-        } else {
-            chrono();
-        }
+        updateTime();
         this.ia = new ArtificialIntelligence(this.SIZE);
-    }
-
-    private void chrono() {
-        timeLeft = System.currentTimeMillis() / Variables.SEGON;
     }
 
     private void updateTime() {
@@ -65,7 +54,8 @@ public class ImageAdapter extends BaseAdapter {
             timing.setText(String.valueOf(gameBoard.getTime() / Variables.SEGON));
             timing.setTextColor(mContext.getResources().getColor(R.color.colorAccent));
         } else {
-            timing.setText(String.valueOf((System.currentTimeMillis() / Variables.SEGON) - timeLeft));
+            timing.setText(String.valueOf((System.currentTimeMillis() / Variables.SEGON) -
+                    gameBoard.time));
         }
     }
 
@@ -130,15 +120,16 @@ public class ImageAdapter extends BaseAdapter {
     }
 
     private void createNewActivity() {
+        int timeLeft;
         if (withTime) {
             timeLeft = gameBoard.getTime() / Variables.SEGON;
         } else {
-            timeLeft = System.currentTimeMillis() / Variables.SEGON - timeLeft;
+            timeLeft = (int) (System.currentTimeMillis() / Variables.SEGON - gameBoard.time);
         }
         Intent intent = new Intent(mContext, ActivityResult.class);
         intent.putExtra(Variables.USER, alias);
         intent.putExtra(Variables.TIME, withTime);
-        intent.putExtra(Variables.TIME_LEFT, (int) timeLeft);
+        intent.putExtra(Variables.TIME_LEFT, timeLeft);
         intent.putExtra(Variables.PLAYER1_SCORE, Integer.parseInt(score1.getText().toString()));
         intent.putExtra(Variables.PLAYER2_SCORE, Integer.parseInt(score2.getText().toString()));
         intent.putExtra(Variables.SIZE, SIZE);

@@ -23,6 +23,7 @@ public class GameBoard implements Parcelable {
             return new GameBoard[size];
         }
     };
+    public long time;
     boolean timeEnd = false;
     // CELL FREE = 0 / CELL PLAYER = 1 / CELL COMPUTER = 2
     private int turn = 1;
@@ -57,6 +58,8 @@ public class GameBoard implements Parcelable {
         if (withTime) {
             timer = new CountDown(time * Variables.SEGON, Variables.SEGON, this);
             timer.start();
+        } else {
+            this.time = System.currentTimeMillis() / Variables.SEGON;
         }
     }
 
