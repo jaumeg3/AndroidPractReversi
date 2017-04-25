@@ -40,18 +40,34 @@ public class ActivityResult extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
-        Intent intent = getIntent();
         date = (EditText) findViewById(R.id.date);
         resume = (EditText) findViewById(R.id.resume);
         email = (EditText) findViewById(R.id.email);
-        getIntentValues(intent);
-        setEditTexts();
         Button exit = (Button) findViewById(R.id.ResultExitButton);
         exit.setOnClickListener(this);
         Button newGame = (Button) findViewById(R.id.ResultNewButton);
         newGame.setOnClickListener(this);
         Button send = (Button) findViewById(R.id.resultButton);
         send.setOnClickListener(this);
+        if (savedInstanceState != null) {
+            recuperateInstances(savedInstanceState);
+        } else {
+            Intent intent = getIntent();
+            getIntentValues(intent);
+            setEditTexts();
+        }
+    }
+
+    private void recuperateInstances(Bundle savedInstanceState) {
+        date.setText(savedInstanceState.getString(Variables.ResultDate));
+        resume.setText(savedInstanceState.getString(Variables.ResultLog));
+        email.setText(savedInstanceState.getString(Variables.ResultEmail));
+        size = savedInstanceState.getInt(Variables.SIZE, 0);
+        withTime = savedInstanceState.getBoolean(Variables.TIME);
+        timeLeft = savedInstanceState.getInt(Variables.TIME_LEFT, 0);
+        score1 = savedInstanceState.getInt(Variables.PLAYER1_SCORE, 0);
+        score2 = savedInstanceState.getInt(Variables.PLAYER2_SCORE, 0);
+        alias = savedInstanceState.getString(Variables.USER);
     }
 
     private void setEditTexts() {
@@ -157,5 +173,19 @@ public class ActivityResult extends AppCompatActivity implements View.OnClickLis
                 }
 
         }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(Variables.ResultDate, date.getText().toString());
+        outState.putString(Variables.ResultLog, resume.getText().toString());
+        outState.putString(Variables.ResultEmail, email.getText().toString());
+        outState.putInt(Variables.SIZE, size);
+        outState.putBoolean(Variables.TIME, withTime);
+        outState.putInt(Variables.TIME_LEFT, timeLeft);
+        outState.putInt(Variables.PLAYER1_SCORE, score1);
+        outState.putInt(Variables.PLAYER2_SCORE, score2);
+        outState.putString(Variables.USER, alias);
     }
 }

@@ -18,4 +18,7 @@ public class Variables {
     static final int PLAYER1 = 1;
     static final int PLAYER2 = 2;
     public static String HaveLeft = "Have left ";
+    public static String ResultDate = "ResultDate";
+    public static String ResultLog = "ResultLog";
+    public static String ResultEmail = "ResultEmail";
 }

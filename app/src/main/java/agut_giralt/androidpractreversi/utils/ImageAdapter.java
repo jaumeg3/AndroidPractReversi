@@ -122,7 +122,7 @@ public class ImageAdapter extends BaseAdapter {
     private void createNewActivity() {
         int timeLeft;
         if (withTime) {
-            timeLeft = gameBoard.getTime() / Variables.SEGON;
+            timeLeft = (int) (gameBoard.time / Variables.SEGON);
         } else {
             timeLeft = (int) (System.currentTimeMillis() / Variables.SEGON - gameBoard.time);
         }
@@ -185,6 +185,7 @@ public class ImageAdapter extends BaseAdapter {
                 return true;
             } else {
                 if (gameBoard.timeEnd) {
+                    gameBoard.time = 0;
                     return true;
                 } else if (gameBoard.getPositionsPossibleCells().size() == 0) {
                     gameBoard.changeTurn();
