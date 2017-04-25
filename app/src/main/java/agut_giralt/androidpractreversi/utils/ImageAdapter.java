@@ -30,7 +30,7 @@ public class ImageAdapter extends BaseAdapter {
     private int TIME = 40;
     private long timeLeft;
     private boolean posible = false;
-    private boolean intelligenceActivated = false; // Ho hem preparat per a que puguin jugar 2 jugadors
+    private boolean intelligenceActivated = true; // Ho hem preparat per a que puguin jugar 2 jugadors simultaniament
     private ArtificialIntelligence ia;
 
 
@@ -186,20 +186,24 @@ public class ImageAdapter extends BaseAdapter {
 
         private boolean isFinal() {
             if (gameBoard.isEnd()) {
+                //Log.d("Final","No hay mas Casilla");
                 return true;
-            } else if (gameBoard.timeEnd) {
-                return true;
-            } else if (gameBoard.getPositionsPossibleCells().isEmpty() && posible) {
-                return true;
-            } else if (gameBoard.getPositionsPossibleCells().isEmpty()) {
-                gameBoard.changeTurn();
-                gameBoard.getPositionsPossible();
-                notifyDataSetChanged();
-                posible = true;
-                return false;
             } else {
-                posible = false;
-                return false;
+                if (gameBoard.timeEnd) {
+                    //Log.d("Final","No hay mas tiempo");
+                    return true;
+                } else if (gameBoard.getPositionsPossibleCells().size() == 0) {
+                    //Log.d("Final","No hay mas Casillas Possibles 1");
+                    gameBoard.changeTurn();
+                    gameBoard.getPositionsPossible();
+                    notifyDataSetChanged();
+                    //Log.d("Final","No hay mas Casillas Possibles 2");
+//Log.d("Final","Hay mas Casillas Possibles 1");
+                    return gameBoard.getPositionsPossibleCells().size() == 0;
+                } else {
+                    //Log.d("Final","ELSE");
+                    return false;
+                }
             }
         }
     }
