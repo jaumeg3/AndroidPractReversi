@@ -55,7 +55,7 @@ public class ImageAdapter extends BaseAdapter {
             timing.setTextColor(mContext.getResources().getColor(R.color.colorAccent));
         } else {
             timing.setText(String.valueOf((System.currentTimeMillis() / Variables.SEGON) -
-                    gameBoard.time));
+                    gameBoard.getTime() / Variables.SEGON));
         }
     }
 
@@ -122,7 +122,7 @@ public class ImageAdapter extends BaseAdapter {
     private void createNewActivity() {
         int timeLeft;
         if (withTime) {
-            timeLeft = (int) (gameBoard.time / Variables.SEGON);
+            timeLeft = gameBoard.getTime() / Variables.SEGON;
         } else {
             timeLeft = (int) (System.currentTimeMillis() / Variables.SEGON - gameBoard.time);
         }
@@ -149,9 +149,11 @@ public class ImageAdapter extends BaseAdapter {
         public void onClick(View v) {
             if (gameBoard.getPositionsPossibleCells().contains(position)) {
                 doTheMovement(position);
-                if (intelligenceActivated && gameBoard.getPositionsPossibleCells().size() > 0) {
+                if (isFinal()) createNewActivity();
+                if (intelligenceActivated) {
                     doTheMovement(ia.getBestMovement(gameBoard.getPositionsPossibleCells()));
                 }
+                if (isFinal()) createNewActivity();
             } else {
                 Toast.makeText(context, "Invalid Movement. Try again", Toast.LENGTH_SHORT).show();
             }
@@ -162,9 +164,6 @@ public class ImageAdapter extends BaseAdapter {
             gameBoard.changeTurn();
             gameBoard.getPositionsPossible();
             update();
-            if (isFinal()) {
-                createNewActivity();
-            }
         }
 
         private void update() {
@@ -185,7 +184,6 @@ public class ImageAdapter extends BaseAdapter {
                 return true;
             } else {
                 if (gameBoard.timeEnd) {
-                    gameBoard.time = 0;
                     return true;
                 } else if (gameBoard.getPositionsPossibleCells().size() == 0) {
                     gameBoard.changeTurn();
