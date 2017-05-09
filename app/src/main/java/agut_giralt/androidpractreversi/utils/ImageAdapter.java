@@ -55,7 +55,7 @@ public class ImageAdapter extends BaseAdapter {
             timing.setTextColor(mContext.getResources().getColor(R.color.colorAccent));
         } else {
             timing.setText(String.valueOf((System.currentTimeMillis() / Variables.SEGON) -
-                    gameBoard.getTime() / Variables.SEGON));
+                    gameBoard.time));
         }
     }
 
