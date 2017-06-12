@@ -21,4 +21,7 @@ public class Variables {
     public static String ResultDate = "ResultDate";
     public static String ResultLog = "ResultLog";
     public static String ResultEmail = "ResultEmail";
+
+    static final String DROP = "DROP TABLE IF EXIST";
+
 }
