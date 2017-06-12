@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="size_grid">
+        <item>4x4</item>
+        <item>6x6</item>
+        <item>8x8</item>
+    </string-array>
+
+    <string-array name="size">
+        <item>4</item>
+        <item>6</item>
+        <item>8</item>
+    </string-array>
+
+    <string-array name="time_sec">
+        <item>30s</item>
+        <item>40s</item>
+        <item>50s</item>
+        <item>60s</item>
+        <item>70s</item>
+        <item>80s</item>
+        <item>90s</item>
+        <item>100s</item>
+
+    </string-array>
+
+    <string-array name="time">
+        <item>30</item>
+        <item>40</item>
+        <item>50</item>
+        <item>60</item>
+        <item>70</item>
+        <item>80</item>
+        <item>90</item>
+        <item>100</item>
+
+    </string-array>
+
+    <string-array name="number_players">
+        <item>1 Player</item>
+        <item>2 Players</item>
+    </string-array>
+
+    <string-array name="Players">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+</resources>

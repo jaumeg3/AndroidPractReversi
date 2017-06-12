@@ -1,13 +1,18 @@
 package agut_giralt.androidpractreversi.activities;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
 import agut_giralt.androidpractreversi.R;
+import agut_giralt.androidpractreversi.fragments.PreferencesFragment;
 
 /**
  * Created by Nil Agut and Jaume Giralt.
@@ -25,6 +30,12 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         btnHelp.setOnClickListener(this);
         btnInit.setOnClickListener(this);
         btnExit.setOnClickListener(this);
+
+        // Part 2 work
+
+        Button btnDB = (Button) findViewById(R.id.btnDB);
+        btnDB.setOnClickListener(this);
+        PreferenceManager.setDefaultValues(this, R.xml.options, false);
     }
 
     @Override
@@ -36,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                 finish();
                 break;
             case R.id.btnInit:
-                Intent intent1 = new Intent(this, ActivityOptions.class);
+                Intent intent1 = new Intent(this, ActivityGame.class);  // Change the intent
                 startActivity(intent1);
                 finish();
                 break;
@@ -44,5 +55,27 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                 finish();
                 break;
         }
+    }
+
+    // Part 2 work
+
+    public boolean onCreateOptionsMenu(Menu m){
+        getMenuInflater().inflate(R.menu.menu_settings,m);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+
+        int id = item.getItemId();
+        switch (id){
+            case R.id.settings:
+                Intent intent = new Intent(this, PreferencesFragment.class);
+                startActivity(intent);
+                return true;
+            default:
+                super.onOptionsItemSelected(item);
+        }
+        return true;
     }
 }

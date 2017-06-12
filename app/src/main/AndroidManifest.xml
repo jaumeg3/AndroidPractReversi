@@ -20,6 +20,7 @@
         <activity android:name=".activities.ActivityOptions" />
         <activity android:name=".activities.ActivityGame" />
         <activity android:name=".activities.ActivityResult" />
+        <activity android:name=".fragments.PreferencesFragment" />
     </application>
 
 </manifest>

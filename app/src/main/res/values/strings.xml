@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Reversi Revolution Game</string>
     <string name="btnHelp">Help</string>
+    <string name="btnDB">Game Logs</string>
     <string name="btnInit">Init Game</string>
     <string name="btnExit">Exit</string>
 
@@ -44,5 +45,22 @@
     <string name="subject">Results of the game - Revolution Reversi</string>
     <string name="Encallat">You are blocked!!</string>
 
-
+    <!-- Shared Preferences -->
+    <string name="GameOptions">Game Options</string>
+    <string name="default_user">user1</string>
+    <string name="pref_username_dialog">Fill the gap with the username</string>
+    <string name="pref_username_summary">Your username</string>
+    <string name="pref_username_title">User</string>
+    <string name="pref_gridSize_title">Size of the grid</string>
+    <string name="pref_gridSize_summary">Choose your grid size</string>
+    <string name="pref_gridSize_dialog">Size of the grid</string>
+    <string name="pref_controlTime_title">Time Control</string>
+    <string name="pref_controlTime_summary">Enable or disable the time countdown</string>
+    <string name="pref_controlTime_dialog">Enable/Disable time</string>
+    <string name="pref_timeSec_title">Game time</string>
+    <string name="pref_timeSec_summary">Select the seconds</string>
+    <string name="pref_timeSec_dialog">Select the time</string>
+    <string name="pref_players_title">Number of players</string>
+    <string name="pref_difficulty_summary">Select number of players</string>
+    <string name="pref_difficulty_dialog">Number of players</string>
 </resources>

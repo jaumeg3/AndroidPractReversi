@@ -28,13 +28,13 @@ public class ImageAdapter extends BaseAdapter {
     private boolean withTime;
     private int SIZE;
     private String alias;
-    private boolean intelligenceActivated = true; // Ho hem preparat per a que puguin jugar 2 jugadors simultaniament
+    private boolean intelligenceActivated; // Ho hem preparat per a que puguin jugar 2 jugadors simultaniament
     private ArtificialIntelligence ia;
 
 
     public ImageAdapter(Activity c, GameBoard gameBoard, String alias, int size,
                         boolean withTime, TextView cells, TextView timing, TextView score1,
-                        TextView score2) {
+                        TextView score2, boolean intelligenceActivated) {
         mContext = c;
         this.gameBoard = gameBoard;
         this.alias = alias;
@@ -44,6 +44,7 @@ public class ImageAdapter extends BaseAdapter {
         this.timing = timing;
         this.score1 = score1;
         this.score2 = score2;
+        this.intelligenceActivated = intelligenceActivated;
         updateTextViews();
         updateTime();
         this.ia = new ArtificialIntelligence(this.SIZE);
