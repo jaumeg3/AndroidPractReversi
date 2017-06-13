@@ -157,7 +157,7 @@ public class ActivityResult extends AppCompatActivity implements View.OnClickLis
                 finish();
                 break;
             case R.id.ResultNewButton:
-                Intent intent = new Intent(this, ActivityOptions.class);
+                Intent intent = new Intent(this, MainActivity.class);
                 finish();
                 startActivity(intent);
                 break;

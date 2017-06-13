@@ -63,4 +63,7 @@
     <string name="pref_players_title">Number of players</string>
     <string name="pref_difficulty_summary">Select number of players</string>
     <string name="pref_difficulty_dialog">Number of players</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
