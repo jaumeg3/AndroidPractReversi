@@ -1,20 +1,11 @@
 package agut_giralt.androidpractreversi.fragments;
 
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.View;
-import android.view.ViewGroup;
 
 import agut_giralt.androidpractreversi.R;
 import agut_giralt.androidpractreversi.activities.DetailActivity;
-import agut_giralt.androidpractreversi.utils.Game;
 
 public class DBList extends FragmentActivity implements FragmentList.GameListener {
 
