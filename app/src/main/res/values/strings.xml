@@ -63,4 +63,5 @@
     <string name="pref_players_title">Number of players</string>
     <string name="pref_difficulty_summary">Select number of players</string>
     <string name="pref_difficulty_dialog">Number of players</string>
+    <string name="Save">Data have been saved successfully</string>
 </resources>

@@ -1,8 +1,11 @@
 package agut_giralt.androidpractreversi.activities;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -17,6 +20,7 @@ import android.widget.Toast;
 import java.util.Date;
 
 import agut_giralt.androidpractreversi.R;
+import agut_giralt.androidpractreversi.utils.SQLite;
 import agut_giralt.androidpractreversi.utils.Variables;
 
 /**
@@ -35,6 +39,8 @@ public class ActivityResult extends AppCompatActivity implements View.OnClickLis
     private EditText date;
     private EditText resume;
     private EditText email;
+    private ContentValues register;
+    private SQLite sqLite;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +55,17 @@ public class ActivityResult extends AppCompatActivity implements View.OnClickLis
         newGame.setOnClickListener(this);
         Button send = (Button) findViewById(R.id.resultButton);
         send.setOnClickListener(this);
+        sqLite = SQLite.getInstance(getApplicationContext());
         if (savedInstanceState != null) {
             recuperateInstances(savedInstanceState);
         } else {
             Intent intent = getIntent();
+            register = new ContentValues();
             getIntentValues(intent);
             setEditTexts();
+            if (sqLite.register(register) != -1) {
+                createToast(R.string.Save, R.drawable.save);
+            }
         }
     }
 
@@ -71,8 +82,12 @@ public class ActivityResult extends AppCompatActivity implements View.OnClickLis
     }
 
     private void setEditTexts() {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         Date actualDate = new Date();
         date.setText(actualDate.toString());
+        register.put(SQLite.GameTable.DATE, actualDate.toString());
+        register.put(SQLite.GameTable.PLAYERS,prefs.getString(getResources().
+                getString(R.string.PLAYERS),"1"));
         createLog();
     }
 
@@ -89,6 +104,7 @@ public class ActivityResult extends AppCompatActivity implements View.OnClickLis
                     Math.abs(score1 - score2) + getString(R.string.Difference) + "." +
                     Math.abs((score1 + score2) - size * size) + " " + getString(R.string.Left) + moreLog);
             createToast(R.string.Time, R.drawable.conometroblanc);
+            register.put(SQLite.GameTable.POSITION, R.string.Time);
         } else if (score1 > score2) {
             resume.setText(getString(R.string.Alias) + alias + ". " +
                     getString(R.string.SizeOfTheGrid) + String.valueOf(size) + ".\n" +
@@ -97,6 +113,7 @@ public class ActivityResult extends AppCompatActivity implements View.OnClickLis
                     Math.abs(score1 - score2) + getString(R.string.Difference) + "." +
                     Math.abs((score1 + score2) - size * size) + " " + getString(R.string.Left) + moreLog);
             createToast(R.string.Win, R.drawable.copa);
+            register.put(SQLite.GameTable.POSITION, R.string.Win);
         } else if (score2 > score1) {
             resume.setText(getString(R.string.Alias) + alias + ". " +
                     getString(R.string.SizeOfTheGrid) + String.valueOf(size) + ".\n" +
@@ -105,6 +122,7 @@ public class ActivityResult extends AppCompatActivity implements View.OnClickLis
                     Math.abs(score1 - score2) + getString(R.string.Difference) + "." +
                     Math.abs((score1 + score2) - size * size) + " " + getString(R.string.Left) + moreLog);
             createToast(R.string.Lose, R.drawable.caca);
+            register.put(SQLite.GameTable.POSITION, R.string.Lose);
         } else if (score1 == score2) {
             resume.setText(getString(R.string.Alias) + alias + ". " +
                     getString(R.string.SizeOfTheGrid) + String.valueOf(size) + ".\n" +
@@ -113,7 +131,8 @@ public class ActivityResult extends AppCompatActivity implements View.OnClickLis
                     Math.abs(score1 - score2) + getString(R.string.Difference) + "." +
                     Math.abs((score1 + score2) - size * size) + " " + getString(R.string.Left) + moreLog);
             createToast(R.string.Draw, R.drawable.empate);
-        } else if (score1 == score2 && timeLeft > 0) {
+            register.put(SQLite.GameTable.POSITION, R.string.Draw);
+        } else if (score1 + score2 < size) {
             resume.setText(getString(R.string.Alias) + alias + ". " +
                     getString(R.string.SizeOfTheGrid) + String.valueOf(size) + ".\n" +
                     getString(R.string.Encallat) + getString(R.string.You) + String.valueOf(score1) +
@@ -121,16 +140,23 @@ public class ActivityResult extends AppCompatActivity implements View.OnClickLis
                     Math.abs(score1 - score2) + getString(R.string.Difference) + "." +
                     Math.abs((score1 + score2) - size * size) + " " + getString(R.string.Left) + moreLog);
             createToast(R.string.Encallat, R.drawable.stop);
+            register.put(SQLite.GameTable.POSITION, R.string.Encallat);
         }
     }
 
     private void getIntentValues(Intent intent) {
         size = intent.getIntExtra(Variables.SIZE, 0);
+        register.put(SQLite.GameTable.SIZE, size);
         withTime = intent.getBooleanExtra(Variables.TIME, false);
+        register.put(SQLite.GameTable.TIME, withTime);
         timeLeft = intent.getIntExtra(Variables.TIME_LEFT, 20);
+        register.put(SQLite.GameTable.FINAL_TIME, timeLeft);
         score1 = intent.getIntExtra(Variables.PLAYER1_SCORE, 0);
+        register.put(SQLite.GameTable.WHITE_PIECES, score1);
         score2 = intent.getIntExtra(Variables.PLAYER2_SCORE, 0);
+        register.put(SQLite.GameTable.BLACK_PIECES, score2);
         alias = intent.getStringExtra(Variables.USER);
+        register.put(SQLite.GameTable.USER, alias);
     }
 
     private void createToast(int resourceText, int resourceImage) {
