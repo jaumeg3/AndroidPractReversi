@@ -1,18 +1,19 @@
 package agut_giralt.androidpractreversi.fragments;
 
 import android.app.Activity;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import agut_giralt.androidpractreversi.R;
-import agut_giralt.androidpractreversi.utils.Game;
+import agut_giralt.androidpractreversi.utils.SQLite;
 
 /**
  * Created by Nil Agut and Jaume Giralt on 13/06/17.
@@ -20,16 +21,6 @@ import agut_giralt.androidpractreversi.utils.Game;
  */
 
 public class FragmentList extends Fragment{
-
-    private Game[] datos =
-            new Game[]{
-                    new Game("Persona 1", "Asunto del correo 1", "Texto del correo 1"),
-                    new Game("Persona 2", "Asunto del correo 2", "Texto del correo 2"),
-                    new Game("Persona 3", "Asunto del correo 3", "Texto del correo 3"),
-                    new Game("Persona 4", "Asunto del correo 4", "Texto del correo 4"),
-                    new Game("Persona 5", "Asunto del correo 5", "Texto del correo 5")};
-
-    private ListView lstListado;
 
     private GameListener listener;
 
@@ -44,13 +35,14 @@ public class FragmentList extends Fragment{
     @Override
     public void onActivityCreated(Bundle state) {
         super.onActivityCreated(state);
-        lstListado = (ListView)getView().findViewById(R.id.LstListado);
-        lstListado.setAdapter(new GameAdapter(this));
+        SQLite database = SQLite.getInstance(getContext());
+        ListView lstListado = (ListView)getView().findViewById(R.id.LstListado);
+        lstListado.setAdapter(new GameAdapter(this, database));
         lstListado.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> list, View view, int pos, long id) {
                 if (listener != null) {
-                    listener.onGameSelected((Game) lstListado.getAdapter().getItem(pos));
+                    listener.onGameSelected(pos);
                 }
             }
         });
@@ -68,34 +60,51 @@ public class FragmentList extends Fragment{
     }
 
 
-    class GameAdapter extends ArrayAdapter<Game> {
+    private class GameAdapter extends BaseAdapter {
 
         Activity context;
+        SQLite database;
 
-        GameAdapter(FragmentList fragmentList) {
-            super(fragmentList.getActivity(),R.layout.listitem_game, datos);
+        GameAdapter(FragmentList fragmentList, SQLite database) {
             this.context = fragmentList.getActivity();
+            this.database = database;
+        }
+
+        @Override
+        public int getCount() {
+            return database.getDataFromDB().getCount();
+        }
+
+        @Override
+        public Object getItem(int i) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int i) {
+            return i;
         }
 
         public View getView(int position, View convertView, ViewGroup parent) {
             LayoutInflater inflater = context.getLayoutInflater();
             View item = inflater.inflate(R.layout.listitem_game, null);
-
+            Cursor cursor = database.getDataFromDB();
+            cursor.moveToPosition(position);
             TextView lblUser = (TextView)item.findViewById(R.id.DBUsername);
-            lblUser.setText(datos[position].getUsername());
+            lblUser.setText(cursor.getString(1));
 
             TextView lblTime = (TextView)item.findViewById(R.id.DBTime);
-            lblTime.setText(datos[position].getTime());
+            lblTime.setText(cursor.getString(2));
 
             TextView lblPosition = (TextView)item.findViewById(R.id.DBPosition);
-            lblPosition.setText(datos[position].getPosition());
+            lblPosition.setText(cursor.getString(8));
 
             return(item);
         }
     }
 
-    public interface GameListener {
-        void onGameSelected(Game g);
+    interface GameListener {
+        void onGameSelected(int pos);
     }
 
     public void setGameListener(GameListener listener) {

@@ -2,6 +2,7 @@ package agut_giralt.androidpractreversi.utils;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -49,6 +50,12 @@ public class SQLite extends SQLiteOpenHelper{
         return database.insert(GameTable.NAME, null, register);
     }
 
+    public Cursor getDataFromDB() {
+        SQLiteDatabase database = getReadableDatabase();
+        return database.rawQuery(GameTable.SELECT_ALL + GameTable.NAME, null);
+    }
+
+
     public class GameTable {
         private static final String NAME = "GameHistorial";
         private static final String HEADER = "(_id INTEGER PRIMARY KEY AUTOINCREMENT, ";
@@ -65,5 +72,6 @@ public class SQLite extends SQLiteOpenHelper{
         private static final String INT_TYPE = " INTEGER, ";
         private static final String BOOL_TYPE = " BOOLEAN, ";
         private static final String CREATE = "CREATE TABLE ";
+        private static final String SELECT_ALL = "SELECT * FROM ";
     }
 }

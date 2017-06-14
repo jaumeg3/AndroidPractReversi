@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -27,18 +28,16 @@ public class DBList extends FragmentActivity implements FragmentList.GameListene
     }
 
     @Override
-    public void onGameSelected(Game c) {
+    public void onGameSelected(int position) {
         FragmentDetail fgdet = (FragmentDetail) getSupportFragmentManager().findFragmentById(R.id.FrgDetalle);
         boolean hayDetalle = (fgdet != null && fgdet.isInLayout());
-
         if (hayDetalle) {
-            fgdet.viewDetails(c.getPosition());
+            fgdet.viewDetails(position);
         }
         else {
-            Intent i = new Intent(this, DetailActivity.class);
-            i.putExtra(DetailActivity.EXTRA_TEXTO, c.getPosition());
-            startActivity(i);
+            Intent intent = new Intent(this, DetailActivity.class);
+            intent.putExtra(DetailActivity.POSITION, position);
+            startActivity(intent);
         }
-
     }
 }

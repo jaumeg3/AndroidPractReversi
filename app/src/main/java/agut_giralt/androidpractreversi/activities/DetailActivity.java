@@ -7,8 +7,7 @@ import agut_giralt.androidpractreversi.fragments.FragmentDetail;
 
 public class DetailActivity extends FragmentActivity {
 
-    public static final String EXTRA_TEXTO =
-            "cat.udl.eps.fragments.ejmoreflexible.EXTRA_TEXTO";
+    public static final String POSITION = "position";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +15,6 @@ public class DetailActivity extends FragmentActivity {
         setContentView(R.layout.activity_detail);
         FragmentDetail detalle = (FragmentDetail) getSupportFragmentManager().
                 findFragmentById(R.id.FrgDetalle);
-        detalle.viewDetails(getIntent().getStringExtra(EXTRA_TEXTO));
+        detalle.viewDetails(getIntent().getIntExtra(POSITION,0));
     }
 }

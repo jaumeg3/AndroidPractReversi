@@ -9,6 +9,8 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -20,6 +22,7 @@ import android.widget.Toast;
 import java.util.Date;
 
 import agut_giralt.androidpractreversi.R;
+import agut_giralt.androidpractreversi.fragments.PreferencesFragment;
 import agut_giralt.androidpractreversi.utils.SQLite;
 import agut_giralt.androidpractreversi.utils.Variables;
 
@@ -213,5 +216,25 @@ public class ActivityResult extends AppCompatActivity implements View.OnClickLis
         outState.putInt(Variables.PLAYER1_SCORE, score1);
         outState.putInt(Variables.PLAYER2_SCORE, score2);
         outState.putString(Variables.USER, alias);
+    }
+
+    public boolean onCreateOptionsMenu(Menu m){
+        getMenuInflater().inflate(R.menu.menu_settings,m);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+
+        int id = item.getItemId();
+        switch (id){
+            case R.id.settings:
+                Intent intent = new Intent(this, PreferencesFragment.class);
+                startActivity(intent);
+                return true;
+            default:
+                super.onOptionsItemSelected(item);
+        }
+        return true;
     }
 }
