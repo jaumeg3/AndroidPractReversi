@@ -1,6 +1,5 @@
 package agut_giralt.androidpractreversi.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -12,6 +11,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 import agut_giralt.androidpractreversi.R;
+import agut_giralt.androidpractreversi.fragments.DBList;
 import agut_giralt.androidpractreversi.fragments.PreferencesFragment;
 
 /**
@@ -51,6 +51,10 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                 startActivity(intent1);
                 finish();
                 break;
+            case R.id.btnDB:
+                Intent intent2 = new Intent(this, DBList.class);
+                startActivity(intent2);
+                finish();
             case R.id.btnExit:
                 finish();
                 break;
