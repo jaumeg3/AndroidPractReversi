@@ -40,7 +40,7 @@
     <string name="Left">cells left.</string>
     <string name="Time">No more time! </string>
     <string name="You">You: </string>
-    <string name="Player2">Your Oponent: </string>
+    <string name="Player2">Your Opponent: </string>
     <string name="sendResults">Send the results</string>
     <string name="subject">Results of the game - Revolution Reversi</string>
     <string name="Encallat">You are blocked!!</string>
