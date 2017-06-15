@@ -1,27 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/grey"
-    android:orientation="vertical"
-    tools:context="agut_giralt.androidpractreversi.activities.ActivityGame">
-
-    <LinearLayout
-        android:id="@+id/gameTop"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
+    android:layout_height="match_parent">
         <fragment
             android:id="@+id/GameFragment"
             class="agut_giralt.androidpractreversi.fragments.FragmentGame"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent" />
         <fragment
             android:id="@+id/LogFragment"
             class="agut_giralt.androidpractreversi.fragments.FragmentGameLog"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
-</RelativeLayout>
+            android:layout_height="match_parent" />
+</LinearLayout>
