@@ -12,8 +12,6 @@ import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.TextView;
 
-import java.io.Serializable;
-
 import agut_giralt.androidpractreversi.R;
 import agut_giralt.androidpractreversi.utils.GameBoard;
 import agut_giralt.androidpractreversi.utils.ImageAdapter;
@@ -22,6 +20,7 @@ import agut_giralt.androidpractreversi.utils.Variables;
 
 public class FragmentGame extends Fragment {
 
+    public GameLogListener listener;
     private int SIZE;
     private boolean time;
     private String player1;
@@ -29,8 +28,6 @@ public class FragmentGame extends Fragment {
     private TextView cells, timing, score1, score2;
     private GameBoard gameBoard;
     private int numberOfPlayers;
-
-    public GameLogListener listener;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -66,12 +63,6 @@ public class FragmentGame extends Fragment {
         this.listener = listener;
     }
 
-    public interface GameLogListener {
-        void onGameButtonItemSelected(Integer position);
-    }
-
-    // PART 1
-
     private void initGridView() {
         ImageAdapter imageAdapter = new ImageAdapter(getActivity(), gameBoard, player1, SIZE, time,
                 cells, timing, score1, score2, numberOfPlayers(), listener);
@@ -80,6 +71,8 @@ public class FragmentGame extends Fragment {
         board.setBackgroundColor(getResources().getColor(R.color.board));
         board.setNumColumns(SIZE);
     }
+
+    // PART 1
 
     private boolean numberOfPlayers() {
         return numberOfPlayers == 1;
@@ -123,6 +116,10 @@ public class FragmentGame extends Fragment {
         outState.putInt(getResources().getString(R.string.GRID_SIZE), SIZE);
         outState.putBoolean(getResources().getString(R.string.ACTIVE_TIME), time);
         outState.putInt(getResources().getString(R.string.TIME_SECONDS), countDown);
+    }
+
+    public interface GameLogListener {
+        void onGameButtonItemSelected(Integer position, GameBoard gameBoard);
     }
 
 }

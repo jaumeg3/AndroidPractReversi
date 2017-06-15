@@ -9,6 +9,7 @@ import java.util.List;
 
 /**
  * Created by Nil Agut and Jaume Giralt.
+ * This file was presented in the first part of the project. It hasn't been modified.
  */
 
 public class GameBoard implements Parcelable {
@@ -361,6 +362,10 @@ public class GameBoard implements Parcelable {
 
     boolean isEnd() {
         return size * size - getPositionsUser().size() - getPositionsComputer().size() == 0;
+    }
+
+    int getTurn() {
+        return turn;
     }
 
     //For save and recuperate the instances

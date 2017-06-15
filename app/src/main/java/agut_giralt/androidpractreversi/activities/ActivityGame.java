@@ -1,15 +1,12 @@
 package agut_giralt.androidpractreversi.activities;
 
 import android.os.Bundle;
-import android.os.Parcel;
-import android.os.Parcelable;
 import android.support.v4.app.FragmentActivity;
-
-import java.io.Serializable;
 
 import agut_giralt.androidpractreversi.R;
 import agut_giralt.androidpractreversi.fragments.FragmentGame;
 import agut_giralt.androidpractreversi.fragments.FragmentGameLog;
+import agut_giralt.androidpractreversi.utils.GameBoard;
 import agut_giralt.androidpractreversi.utils.LogGame;
 
 /**
@@ -31,14 +28,14 @@ public class ActivityGame extends FragmentActivity implements FragmentGame.GameL
     }
 
     @Override
-    public void onGameButtonItemSelected(Integer position) {
+    public void onGameButtonItemSelected(Integer position, GameBoard gameBoard) {
         FragmentGameLog fragmentGameLog = (FragmentGameLog) getSupportFragmentManager().
                 findFragmentById(R.id.LogFragment);
 
         if (fragmentGameLog != null && fragmentGameLog.isInLayout()) {
             FragmentGameLog frgdetail = (FragmentGameLog) getSupportFragmentManager().
                     findFragmentById(R.id.LogFragment);
-            logs = logGame.getLog(position);
+            logs = logGame.getLog(position, gameBoard);
             frgdetail.showLog(logs);
         }
     }

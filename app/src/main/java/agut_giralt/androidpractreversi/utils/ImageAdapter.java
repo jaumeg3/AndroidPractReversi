@@ -18,6 +18,8 @@ import agut_giralt.androidpractreversi.fragments.FragmentGame;
 
 /**
  * Created by Nil Agut and Jaume Giralt.
+ * This file was presented in the first part of the project. There is only one modification,
+ * in order to delegate the log to the host activity.
  */
 
 public class ImageAdapter extends BaseAdapter {
@@ -174,7 +176,7 @@ public class ImageAdapter extends BaseAdapter {
             gameBoard.changeTurn();
             gameBoard.getPositionsPossible();
             update();
-            listener.onGameButtonItemSelected(position);
+            listener.onGameButtonItemSelected(position, gameBoard);
         }
 
         private void update() {
