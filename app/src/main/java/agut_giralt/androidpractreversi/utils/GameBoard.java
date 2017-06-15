@@ -34,6 +34,7 @@ public class GameBoard implements Parcelable {
     private List<Integer> PossibleCells = new ArrayList<>();
     private HashMap<Integer, List<Integer>> cellsToChange = new HashMap<>();
     private CountDown timer;
+    public LogGame logGame;
 
     public GameBoard(int size) {
         this.size = size;

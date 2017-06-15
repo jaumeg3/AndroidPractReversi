@@ -140,6 +140,7 @@ public class ImageAdapter extends BaseAdapter {
         intent.putExtra(Variables.SIZE, SIZE);
         mContext.startActivity(intent);
         mContext.finish();
+        LogGame.deleteLog();
     }
 
     private class MyOnClickListener implements View.OnClickListener {
@@ -179,9 +180,11 @@ public class ImageAdapter extends BaseAdapter {
         }
 
         private void fillTheCells(int position) {
-            for (int cells :
-                    gameBoard.getCellsToChange(position)) {
-                gameBoard.fillCell(cells);
+            if (gameBoard.getPositionsPossibleCells() != null) {
+                for (int cells :
+                        gameBoard.getCellsToChange(position)) {
+                    gameBoard.fillCell(cells);
+                }
             }
         }
 

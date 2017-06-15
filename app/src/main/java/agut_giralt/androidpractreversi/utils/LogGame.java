@@ -6,20 +6,22 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.preference.PreferenceManager;
 
+import java.io.Serializable;
+
 import agut_giralt.androidpractreversi.R;
 
-public class LogGame implements Parcelable {
+public class LogGame implements Serializable {
+
+    private static LogGame INSTANCE = null;
     private String logDetails = "";
 
-    private static LogGame logGame = null;
-
-    private LogGame(Activity ac) {
+    public LogGame(Activity ac) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(ac);
         logDetails += "...LOG...\n" +
                 " Username: " + prefs.getString(ac.getString(R.string.USER),
-                ac.getString(R.string.DEFAULT)) + ";" +
+                "Error loading the username") + ";" +
                 " Size Grid=" + prefs.getString(ac.getString(R.string.GRID_SIZE),
-                ac.getString(R.string.DEFAULT))+"\n";
+                "Error loading the Grid Size")+"\n";
         if(prefs.getBoolean(ac.getString(R.string.ACTIVE_TIME),false)) {
             logDetails += " Time control disabled\n";
         }else{
@@ -27,42 +29,20 @@ public class LogGame implements Parcelable {
         }
     }
 
-    public static LogGame getInstance(Activity ac){
-        if (logGame == null){
-            logGame = new LogGame(ac);
+    public static LogGame getINSTANCE(Activity ac){
+        if (INSTANCE == null) {
+            INSTANCE = new LogGame(ac);
         }
-        return logGame;
+        return INSTANCE;
     }
 
-    private LogGame(Parcel in) {
-        logDetails = in.readString();
+    public static void deleteLog() {
+        INSTANCE = null;
     }
-
-    public static final Creator<LogGame> CREATOR = new Creator<LogGame>() {
-        @Override
-        public LogGame createFromParcel(Parcel in) {
-            return new LogGame(in);
-        }
-
-        @Override
-        public LogGame[] newArray(int size) {
-            return new LogGame[size];
-        }
-    };
 
     public String getLog(Integer position) {
         //TODO: LOG String
         return logDetails += "      " + position.toString() + '\n';
         //TODO: Layouts
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(logDetails);
     }
 }

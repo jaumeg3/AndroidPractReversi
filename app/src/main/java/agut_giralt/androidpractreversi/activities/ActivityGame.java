@@ -1,7 +1,11 @@
 package agut_giralt.androidpractreversi.activities;
 
 import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.v4.app.FragmentActivity;
+
+import java.io.Serializable;
 
 import agut_giralt.androidpractreversi.R;
 import agut_giralt.androidpractreversi.fragments.FragmentGame;
@@ -14,12 +18,16 @@ import agut_giralt.androidpractreversi.utils.LogGame;
 
 public class ActivityGame extends FragmentActivity implements FragmentGame.GameLogListener {
 
+    private LogGame logGame;
+    private String logs;
+
     public void onCreate(Bundle saveInstance) {
         super.onCreate(saveInstance);
         setContentView(R.layout.activity_game);
         FragmentGame fragGame = (FragmentGame) getSupportFragmentManager().findFragmentById
                 (R.id.GameFragment);
         fragGame.setGameLogListener(this);
+        logGame = LogGame.getINSTANCE(this);
     }
 
     @Override
@@ -30,8 +38,8 @@ public class ActivityGame extends FragmentActivity implements FragmentGame.GameL
         if (fragmentGameLog != null && fragmentGameLog.isInLayout()) {
             FragmentGameLog frgdetail = (FragmentGameLog) getSupportFragmentManager().
                     findFragmentById(R.id.LogFragment);
-            LogGame logGame = LogGame.getInstance(this);
-            frgdetail.showLog(logGame.getLog(position));
+            logs = logGame.getLog(position);
+            frgdetail.showLog(logs);
         }
     }
 }

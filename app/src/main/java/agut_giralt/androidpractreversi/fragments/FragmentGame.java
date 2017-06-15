@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.TextView;
 
+import java.io.Serializable;
+
 import agut_giralt.androidpractreversi.R;
 import agut_giralt.androidpractreversi.utils.GameBoard;
 import agut_giralt.androidpractreversi.utils.ImageAdapter;
