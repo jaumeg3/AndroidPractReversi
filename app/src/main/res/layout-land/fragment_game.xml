@@ -5,14 +5,27 @@
     android:layout_height="match_parent"
     android:background="@color/grey"
     android:orientation="horizontal"
-    tools:context="agut_giralt.androidpractreversi.activities.ActivityGame">
+    tools:context="agut_giralt.androidpractreversi.activities.ActivityGame"
+    android:weightSum="100">
 
     <LinearLayout
         android:id="@+id/gameTop"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
+        android:layout_weight="40"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/title_game"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textSize="@dimen/title"
+            android:textStyle="bold|italic"
+            android:textColor="#000"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_horizontal"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -58,6 +71,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="50"
                 android:drawableLeft="@drawable/ibcr"
+                android:drawableStart="@drawable/ibcr"
                 android:text="@string/user"
                 android:textColor="@color/colorPrimary"
                 android:textStyle="bold" />
@@ -77,6 +91,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="50"
                 android:drawableLeft="@drawable/iwcr"
+                android:drawableStart="@drawable/iwcr"
                 android:text="@string/ia"
                 android:textColor="@color/colorPrimary"
                 android:textStyle="bold" />
@@ -91,9 +106,9 @@
 
     <LinearLayout
         android:id="@+id/gridLinearLayout"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
+        android:layout_weight="60"
         android:layout_height="wrap_content"
-        android:layout_below="@id/gameTop"
         android:layout_margin="10dp"
         android:background="@color/colorBackground"
         android:padding="10dp">

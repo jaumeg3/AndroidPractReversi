@@ -9,6 +9,6 @@
         <fragment
             android:id="@+id/GameFragment"
             class="agut_giralt.androidpractreversi.fragments.FragmentGame"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 </RelativeLayout>

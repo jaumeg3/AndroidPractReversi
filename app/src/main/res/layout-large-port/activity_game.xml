@@ -4,11 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <fragment class="agut_giralt.androidpractreversi.fragments.FragmentGame"
-        android:layout_height="wrap_content"
+        android:layout_weight="50"
+        android:layout_height="0px"
         android:layout_width="match_parent"
         android:id="@+id/GameFragment"  />
     <fragment class="agut_giralt.androidpractreversi.fragments.FragmentGameLog"
-        android:layout_height="match_parent"
+        android:layout_weight="50"
+        android:layout_height="0px"
         android:layout_width="match_parent"
         android:id="@+id/LogFragment"  />
 </LinearLayout>
