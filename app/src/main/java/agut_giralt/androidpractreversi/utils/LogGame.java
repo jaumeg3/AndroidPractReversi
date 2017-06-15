@@ -43,6 +43,9 @@ public class LogGame implements Serializable {
     public String getLog(Integer position) {
         //TODO: LOG String
         return logDetails += "      " + position.toString() + '\n';
-        //TODO: Layouts
+    }
+
+    private class MyTime {
+
     }
 }
