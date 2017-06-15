@@ -30,8 +30,15 @@ public class FragmentDetail extends Fragment {
         cursor.moveToPosition(position);
         String string = "";
         string += SQLite.GameTable.USER + ": " + cursor.getString(1) + '\n' +
-                SQLite.GameTable.DATE + ": " + cursor.getString(2) + "\n";
-        //TODO : FINISH THE STRING
+                SQLite.GameTable.DATE + ": " + cursor.getString(2) + "\n" +
+                SQLite.GameTable.SIZE + ": " + cursor.getString(3) + "\n" +
+                SQLite.GameTable.TIME + ": " + cursor.getString(4) + "\n" +
+                SQLite.GameTable.PLAYERS + ": " + cursor.getString(5) + "\n" +
+                SQLite.GameTable.WHITE_PIECES + ": " + cursor.getString(6) + "\n" +
+                SQLite.GameTable.BLACK_PIECES + ": " + cursor.getString(7) + "\n" +
+                SQLite.GameTable.FINAL_TIME + ": " + cursor.getString(8) + "\n" +
+                SQLite.GameTable.POSITION + ": " +
+                getResources().getString(Integer.valueOf(cursor.getString(9))) + "\n";
         return string;
     }
 }

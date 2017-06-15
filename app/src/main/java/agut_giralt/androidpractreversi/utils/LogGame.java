@@ -36,7 +36,7 @@ public class LogGame implements Serializable {
         return INSTANCE;
     }
 
-    public static void deleteLog() {
+    static void deleteLog() {
         INSTANCE = null;
     }
 
