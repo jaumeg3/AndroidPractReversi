@@ -8,12 +8,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 /**
  * Created by Nil Agut and Jaume Giralt on 12/06/17.
- *
  */
 
-public class SQLite extends SQLiteOpenHelper{
+public class SQLite extends SQLiteOpenHelper {
 
-    private static SQLite sqLiteInstance;
     private final static String DB_NAME = "DB";
     private final static int DB_VERSION = 1;
     private final static String sql = GameTable.CREATE + GameTable.NAME + GameTable.HEADER +
@@ -21,7 +19,19 @@ public class SQLite extends SQLiteOpenHelper{
             GameTable.SIZE + GameTable.INT_TYPE + GameTable.TIME + GameTable.BOOL_TYPE +
             GameTable.PLAYERS + GameTable.TEXT_TYPE + GameTable.WHITE_PIECES + GameTable.INT_TYPE +
             GameTable.BLACK_PIECES + GameTable.INT_TYPE + GameTable.FINAL_TIME +
-            GameTable.TEXT_TYPE + GameTable.POSITION + " TEXT)" ;
+            GameTable.TEXT_TYPE + GameTable.POSITION + " TEXT)";
+    private static SQLite sqLiteInstance;
+
+    private SQLite(Context context) {
+        super(context, DB_NAME, null, DB_VERSION);
+    }
+
+    public static SQLite getInstance(Context context) {
+        if (sqLiteInstance == null) {
+            sqLiteInstance = new SQLite(context);
+        }
+        return sqLiteInstance;
+    }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
@@ -32,17 +42,6 @@ public class SQLite extends SQLiteOpenHelper{
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL(Variables.DROP + DB_NAME);
         sqLiteDatabase.execSQL(sql);
-    }
-
-    private SQLite(Context context) {
-        super(context, DB_NAME, null, DB_VERSION);
-    }
-
-    public static SQLite getInstance(Context context) {
-        if (sqLiteInstance == null){
-            sqLiteInstance = new SQLite(context);
-        }
-        return sqLiteInstance;
     }
 
     public long register(ContentValues register) {
@@ -57,8 +56,6 @@ public class SQLite extends SQLiteOpenHelper{
 
 
     public class GameTable {
-        private static final String NAME = "GameHistorial";
-        private static final String HEADER = "(_id INTEGER PRIMARY KEY AUTOINCREMENT, ";
         public static final String USER = "username";
         public static final String DATE = "date";
         public static final String SIZE = "size";
@@ -68,6 +65,8 @@ public class SQLite extends SQLiteOpenHelper{
         public static final String BLACK_PIECES = "player2";
         public static final String FINAL_TIME = "final_time";
         public static final String POSITION = "position";
+        private static final String NAME = "GameHistorial";
+        private static final String HEADER = "(_id INTEGER PRIMARY KEY AUTOINCREMENT, ";
         private static final String TEXT_TYPE = " TEXT, ";
         private static final String INT_TYPE = " INTEGER, ";
         private static final String BOOL_TYPE = " BOOLEAN, ";

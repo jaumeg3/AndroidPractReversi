@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_width="match_parent" >
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -10,24 +10,25 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_height="wrap_content"
+            android:id="@+id/DBUsername"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:id="@+id/DBUsername"/>
+            android:textStyle="bold" />
 
         <TextView
-            android:layout_height="wrap_content"
+            android:id="@+id/DBTime"
             android:layout_width="wrap_content"
-            android:id="@+id/DBTime"/>
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp" />
 
     </LinearLayout>
 
     <TextView
-        android:layout_height="wrap_content"
+        android:id="@+id/DBPosition"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:textSize="12sp"
-        android:textStyle="normal"
-        android:id="@+id/DBPosition"/>
+        android:textStyle="normal" />
 
 </LinearLayout>

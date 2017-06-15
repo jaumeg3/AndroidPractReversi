@@ -11,7 +11,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 import agut_giralt.androidpractreversi.R;
-import agut_giralt.androidpractreversi.fragments.DBList;
+import agut_giralt.androidpractreversi.fragments.FragmentDBList;
 import agut_giralt.androidpractreversi.fragments.PreferencesFragment;
 
 /**
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                 finish();
                 break;
             case R.id.btnDB:
-                Intent intent2 = new Intent(this, DBList.class);
+                Intent intent2 = new Intent(this, FragmentDBList.class);
                 startActivity(intent2);
                 finish();
             case R.id.btnExit:
@@ -63,16 +63,16 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 
     // Part 2 work
 
-    public boolean onCreateOptionsMenu(Menu m){
-        getMenuInflater().inflate(R.menu.menu_settings,m);
+    public boolean onCreateOptionsMenu(Menu m) {
+        getMenuInflater().inflate(R.menu.menu_settings, m);
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item){
+    public boolean onOptionsItemSelected(MenuItem item) {
 
         int id = item.getItemId();
-        switch (id){
+        switch (id) {
             case R.id.settings:
                 Intent intent = new Intent(this, PreferencesFragment.class);
                 startActivity(intent);

@@ -30,7 +30,7 @@ public class FragmentDetail extends Fragment {
         cursor.moveToPosition(position);
         String string = "";
         string += SQLite.GameTable.USER + ": " + cursor.getString(1) + '\n' +
-        SQLite.GameTable.DATE + ": " + cursor.getString(2) + "\n";
+                SQLite.GameTable.DATE + ": " + cursor.getString(2) + "\n";
         //TODO : FINISH THE STRING
         return string;
     }

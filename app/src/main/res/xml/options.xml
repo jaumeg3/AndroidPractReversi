@@ -3,53 +3,49 @@
     <PreferenceCategory android:title="@string/GameOptions">
         <EditTextPreference
             android:id="@+id/user_config"
-            android:key="@string/USER"
-            android:title="@string/pref_username_title"
-            android:summary = "@string/pref_username_summary"
-            android:dialogTitle="@string/pref_username_dialog"
             android:defaultValue="@string/DEFAULT"
-            />
+            android:dialogTitle="@string/pref_username_dialog"
+            android:key="@string/USER"
+            android:summary="@string/pref_username_summary"
+            android:title="@string/pref_username_title" />
 
         <ListPreference
             android:id="@+id/grid_config"
-            android:key="@string/GRID_SIZE"
-            android:title="@string/pref_gridSize_title"
-            android:summary = "@string/pref_gridSize_summary"
-            android:dialogTitle="@string/pref_gridSize_dialog"
             android:defaultValue="4"
+            android:dialogTitle="@string/pref_gridSize_dialog"
             android:entries="@array/size_grid"
             android:entryValues="@array/size"
-            />
+            android:key="@string/GRID_SIZE"
+            android:summary="@string/pref_gridSize_summary"
+            android:title="@string/pref_gridSize_title" />
 
         <CheckBoxPreference
             android:id="@+id/control_time"
-            android:key="@string/ACTIVE_TIME"
-            android:title="@string/pref_controlTime_title"
-            android:summary = "@string/pref_controlTime_summary"
-            android:dialogTitle="@string/pref_controlTime_dialog"
             android:defaultValue="true"
-            />
+            android:dialogTitle="@string/pref_controlTime_dialog"
+            android:key="@string/ACTIVE_TIME"
+            android:summary="@string/pref_controlTime_summary"
+            android:title="@string/pref_controlTime_title" />
 
         <ListPreference
             android:id="@+id/time"
-            android:key="@string/TIME_SECONDS"
-            android:title="@string/pref_timeSec_title"
-            android:summary = "@string/pref_timeSec_summary"
+            android:defaultValue="40"
             android:dialogTitle="@string/pref_timeSec_dialog"
             android:entries="@array/time_sec"
             android:entryValues="@array/time"
-            android:defaultValue="40"
-            />
+            android:key="@string/TIME_SECONDS"
+            android:summary="@string/pref_timeSec_summary"
+            android:title="@string/pref_timeSec_title" />
 
         <ListPreference
             android:id="@+id/players"
-            android:key="@string/PLAYERS"
-            android:title="@string/pref_players_title"
-            android:summary = "@string/pref_difficulty_summary"
+            android:defaultValue="1"
             android:dialogTitle="@string/pref_difficulty_dialog"
             android:entries="@array/number_players"
             android:entryValues="@array/Players"
-            android:defaultValue="1"
+            android:key="@string/PLAYERS"
+            android:summary="@string/pref_difficulty_summary"
+            android:title="@string/pref_players_title"
 
             />
 

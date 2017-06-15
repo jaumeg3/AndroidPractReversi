@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/title_db_activity"
+        style="@style/Title"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="10"
+        android:text="@string/DatabaseLog" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="80"
+        android:orientation="horizontal">
+
+
+        <fragment
+            android:id="@+id/ListFrag"
+            class="agut_giralt.androidpractreversi.fragments.FragmentList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="30dp"
+            android:layout_weight="100" />
+
+        <fragment
+            android:id="@+id/FrgDetalle"
+            class="agut_giralt.androidpractreversi.fragments.FragmentDetail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="100" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/back_menu"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="10"
+        android:drawableLeft="@drawable/back"
+        android:text="@string/GoBack" />
+</LinearLayout>

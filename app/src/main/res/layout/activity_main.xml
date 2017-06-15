@@ -44,7 +44,7 @@
             android:drawableLeft="@drawable/igrc"
             android:drawableTint="@color/colorPrimary"
             android:text="@string/btnDB"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btnExit"

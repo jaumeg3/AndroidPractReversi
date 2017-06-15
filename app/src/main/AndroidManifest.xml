@@ -21,7 +21,7 @@
         <activity android:name=".activities.ActivityGame" />
         <activity android:name=".activities.ActivityResult" />
         <activity android:name=".fragments.PreferencesFragment" />
-        <activity android:name=".fragments.DBList" />
+        <activity android:name=".fragments.FragmentDBList" />
         <activity android:name=".activities.DetailActivity" />
     </application>
 

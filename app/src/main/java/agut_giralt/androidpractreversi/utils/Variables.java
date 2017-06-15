@@ -17,11 +17,10 @@ public class Variables {
     static final int SEGON = 1000;
     static final int PLAYER1 = 1;
     static final int PLAYER2 = 2;
+    static final String DROP = "DROP TABLE IF EXIST";
     public static String HaveLeft = "Have left ";
     public static String ResultDate = "ResultDate";
     public static String ResultLog = "ResultLog";
     public static String ResultEmail = "ResultEmail";
-
-    static final String DROP = "DROP TABLE IF EXIST";
 
 }

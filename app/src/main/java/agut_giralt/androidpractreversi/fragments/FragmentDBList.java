@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentActivity;
 import agut_giralt.androidpractreversi.R;
 import agut_giralt.androidpractreversi.activities.DetailActivity;
 
-public class DBList extends FragmentActivity implements FragmentList.GameListener {
+public class FragmentDBList extends FragmentActivity implements FragmentList.GameListener {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -24,11 +24,12 @@ public class DBList extends FragmentActivity implements FragmentList.GameListene
         boolean hayDetalle = (fgdet != null && fgdet.isInLayout());
         if (hayDetalle) {
             fgdet.viewDetails(position);
-        }
-        else {
+        } else {
             Intent intent = new Intent(this, DetailActivity.class);
             intent.putExtra(DetailActivity.POSITION, position);
             startActivity(intent);
         }
     }
+
+    //TODO: BACK BUTTON
 }

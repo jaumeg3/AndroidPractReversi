@@ -23,86 +23,87 @@
         android:layout_height="match_parent"
         android:layout_below="@id/title_config">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/title_config"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/user"
-            android:text="@string/alias"
-            android:textSize="20dp" />
-
-        <EditText
-            android:id="@+id/aliasEditText1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="@string/optionsHint1" />
-
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/grid"
-            android:paddingBottom="2dp"
-            android:paddingTop="20dp"
-            android:text="@string/size"
-            android:textSize="20dp" />
+            android:layout_below="@id/title_config"
+            android:orientation="vertical">
 
-        <RadioGroup
-            android:id="@+id/size"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/radioButton4"
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="4" />
+                android:drawableLeft="@drawable/user"
+                android:text="@string/alias"
+                android:textSize="20dp" />
 
-            <RadioButton
-                android:id="@+id/radioButton6"
+            <EditText
+                android:id="@+id/aliasEditText1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="6" />
+                android:hint="@string/optionsHint1" />
 
-            <RadioButton
-                android:id="@+id/radioButton8"
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/grid"
+                android:paddingBottom="2dp"
+                android:paddingTop="20dp"
+                android:text="@string/size"
+                android:textSize="20dp" />
+
+            <RadioGroup
+                android:id="@+id/size"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radioButton4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4" />
+
+                <RadioButton
+                    android:id="@+id/radioButton6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="6" />
+
+                <RadioButton
+                    android:id="@+id/radioButton8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="8" />
+
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/conometroblanc"
+                android:paddingBottom="2dp"
+                android:paddingTop="20dp"
+                android:text="@string/time"
+                android:textSize="20sp" />
+
+            <CheckBox
+                android:id="@+id/time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="8" />
+                android:layout_gravity="center"
+                android:text="@string/time" />
 
-        </RadioGroup>
+            <Button
+                android:id="@+id/startBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="@string/startBtn" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/conometroblanc"
-            android:paddingBottom="2dp"
-            android:paddingTop="20dp"
-            android:text="@string/time"
-            android:textSize="20sp" />
-
-        <CheckBox
-            android:id="@+id/time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/time" />
-
-        <Button
-            android:id="@+id/startBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:gravity="center"
-            android:text="@string/startBtn" />
-
-    </LinearLayout>
+        </LinearLayout>
     </ScrollView>
 </RelativeLayout>

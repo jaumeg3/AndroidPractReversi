@@ -4,14 +4,14 @@ import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
+
 import agut_giralt.androidpractreversi.R;
 
 /**
  * Created by Nil Agut and Jaume Giralt on 12/06/17.
- *
  */
 
-public class PreferencesFragment extends PreferenceActivity{
+public class PreferencesFragment extends PreferenceActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

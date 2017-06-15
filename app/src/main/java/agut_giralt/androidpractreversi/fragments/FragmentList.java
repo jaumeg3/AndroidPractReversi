@@ -20,7 +20,7 @@ import agut_giralt.androidpractreversi.utils.SQLite;
  *
  */
 
-public class FragmentList extends Fragment{
+public class FragmentList extends Fragment {
 
     private GameListener listener;
 
@@ -36,7 +36,7 @@ public class FragmentList extends Fragment{
     public void onActivityCreated(Bundle state) {
         super.onActivityCreated(state);
         SQLite database = SQLite.getInstance(getContext());
-        ListView lstListado = (ListView)getView().findViewById(R.id.LstListado);
+        ListView lstListado = (ListView) getView().findViewById(R.id.LstListado);
         lstListado.setAdapter(new GameAdapter(this, database));
         lstListado.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -53,12 +53,18 @@ public class FragmentList extends Fragment{
         super.onAttach(ac);
         try {
             listener = (GameListener) ac;
-        }
-        catch (ClassCastException e) {
+        } catch (ClassCastException e) {
             throw new ClassCastException(ac.toString() + " must implement GameListener");
         }
     }
 
+    public void setGameListener(GameListener listener) {
+        this.listener = listener;
+    }
+
+    interface GameListener {
+        void onGameSelected(int pos);
+    }
 
     private class GameAdapter extends BaseAdapter {
 
@@ -90,24 +96,16 @@ public class FragmentList extends Fragment{
             View item = inflater.inflate(R.layout.listitem_game, null);
             Cursor cursor = database.getDataFromDB();
             cursor.moveToPosition(position);
-            TextView lblUser = (TextView)item.findViewById(R.id.DBUsername);
+            TextView lblUser = (TextView) item.findViewById(R.id.DBUsername);
             lblUser.setText(cursor.getString(1));
 
-            TextView lblTime = (TextView)item.findViewById(R.id.DBTime);
+            TextView lblTime = (TextView) item.findViewById(R.id.DBTime);
             lblTime.setText(cursor.getString(2));
 
-            TextView lblPosition = (TextView)item.findViewById(R.id.DBPosition);
-            lblPosition.setText(cursor.getString(8));
+            TextView lblPosition = (TextView) item.findViewById(R.id.DBPosition);
+            lblPosition.setText(getString(Integer.valueOf(cursor.getString(9)))); //TODO: ERROR WITH POSITION
 
-            return(item);
+            return (item);
         }
-    }
-
-    interface GameListener {
-        void onGameSelected(int pos);
-    }
-
-    public void setGameListener(GameListener listener) {
-        this.listener = listener;
     }
 }

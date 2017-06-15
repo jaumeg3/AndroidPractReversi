@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import agut_giralt.androidpractreversi.R;
 import agut_giralt.androidpractreversi.activities.ActivityResult;
+import agut_giralt.androidpractreversi.fragments.FragmentGame;
 
 
 /**
@@ -28,13 +29,15 @@ public class ImageAdapter extends BaseAdapter {
     private boolean withTime;
     private int SIZE;
     private String alias;
-    private boolean intelligenceActivated; // Ho hem preparat per a que puguin jugar 2 jugadors simultaniament
+    private boolean intelligenceActivated;
     private ArtificialIntelligence ia;
+    private FragmentGame.GameLogListener listener;
 
 
     public ImageAdapter(Activity c, GameBoard gameBoard, String alias, int size,
                         boolean withTime, TextView cells, TextView timing, TextView score1,
-                        TextView score2, boolean intelligenceActivated) {
+                        TextView score2, boolean intelligenceActivated,
+                        FragmentGame.GameLogListener listener) {
         mContext = c;
         this.gameBoard = gameBoard;
         this.alias = alias;
@@ -48,6 +51,7 @@ public class ImageAdapter extends BaseAdapter {
         updateTextViews();
         updateTime();
         this.ia = new ArtificialIntelligence(this.SIZE);
+        this.listener = listener;
     }
 
     private void updateTime() {
@@ -165,6 +169,7 @@ public class ImageAdapter extends BaseAdapter {
             gameBoard.changeTurn();
             gameBoard.getPositionsPossible();
             update();
+            listener.onGameButtonItemSelected(position);
         }
 
         private void update() {

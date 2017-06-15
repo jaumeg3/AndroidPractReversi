@@ -1,6 +1,7 @@
 package agut_giralt.androidpractreversi.fragments;
 
 
+import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -17,20 +18,7 @@ import agut_giralt.androidpractreversi.utils.ImageAdapter;
 import agut_giralt.androidpractreversi.utils.Variables;
 
 
-public class GameFragment extends Fragment {
-
-
-    public GameFragment() {
-        // Required empty public constructor
-    }
-
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_game, container, false);
-    }
+public class FragmentGame extends Fragment {
 
     private int SIZE;
     private boolean time;
@@ -40,13 +28,21 @@ public class GameFragment extends Fragment {
     private GameBoard gameBoard;
     private int numberOfPlayers;
 
+    public GameLogListener listener;
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_game, container, false);
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
     @Override
-    public void onActivityCreated (Bundle savedInstanceState) {
+    public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         getConfiguration();
         if (savedInstanceState != null) getBackState(savedInstanceState);
@@ -54,10 +50,29 @@ public class GameFragment extends Fragment {
         initGridView();
     }
 
+    @Override
+    public void onAttach(Activity ac) {
+        super.onAttach(ac);
+        try {
+            listener = (GameLogListener) ac;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(ac.toString() + " must implement GameLogListener");
+        }
+    }
+
+    public void setGameLogListener(GameLogListener listener) {
+        this.listener = listener;
+    }
+
+    public interface GameLogListener {
+        void onGameButtonItemSelected(Integer position);
+    }
+
+    // PART 1
 
     private void initGridView() {
         ImageAdapter imageAdapter = new ImageAdapter(getActivity(), gameBoard, player1, SIZE, time,
-                cells, timing, score1, score2, numberOfPlayers());
+                cells, timing, score1, score2, numberOfPlayers(), listener);
         GridView board = (GridView) getView().findViewById(R.id.board);
         board.setAdapter(imageAdapter);
         board.setBackgroundColor(getResources().getColor(R.color.board));
@@ -87,11 +102,11 @@ public class GameFragment extends Fragment {
                 getResources().getString(R.string.DEFAULT));
         SIZE = Integer.valueOf(prefs.getString(getResources().getString(R.string.GRID_SIZE),
                 getResources().getString(R.string.DEFAULT_GRID_SIZE)));
-        time = prefs.getBoolean(getResources().getString(R.string.ACTIVE_TIME),true);
+        time = prefs.getBoolean(getResources().getString(R.string.ACTIVE_TIME), true);
         countDown = Integer.valueOf(prefs.getString(getResources().getString(R.string.TIME_SECONDS),
                 "40"));
         numberOfPlayers = Integer.valueOf(prefs.getString(getResources().getString(R.string.PLAYERS)
-                ,"1"));
+                , "1"));
         cells = (TextView) getView().findViewById(R.id.cells);
         timing = (TextView) getView().findViewById(R.id.timing);
         score1 = (TextView) getView().findViewById(R.id.score1);

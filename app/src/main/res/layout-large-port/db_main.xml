@@ -18,12 +18,17 @@
         android:layout_height="0px"
         android:layout_weight="100" />
 
+    <fragment
+        android:id="@+id/FrgDetalle"
+        class="agut_giralt.androidpractreversi.fragments.FragmentDetail"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="100" />
 
     <Button
         android:id="@+id/back_menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawableLeft="@drawable/back"
-        android:drawableStart="@drawable/back"
         android:text="@string/GoBack" />
 </LinearLayout>

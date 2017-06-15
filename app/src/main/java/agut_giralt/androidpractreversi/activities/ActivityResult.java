@@ -43,7 +43,6 @@ public class ActivityResult extends AppCompatActivity implements View.OnClickLis
     private EditText resume;
     private EditText email;
     private ContentValues register;
-    private SQLite sqLite;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +57,7 @@ public class ActivityResult extends AppCompatActivity implements View.OnClickLis
         newGame.setOnClickListener(this);
         Button send = (Button) findViewById(R.id.resultButton);
         send.setOnClickListener(this);
-        sqLite = SQLite.getInstance(getApplicationContext());
+        SQLite sqLite = SQLite.getInstance(getApplicationContext());
         if (savedInstanceState != null) {
             recuperateInstances(savedInstanceState);
         } else {
@@ -89,8 +88,8 @@ public class ActivityResult extends AppCompatActivity implements View.OnClickLis
         Date actualDate = new Date();
         date.setText(actualDate.toString());
         register.put(SQLite.GameTable.DATE, actualDate.toString());
-        register.put(SQLite.GameTable.PLAYERS,prefs.getString(getResources().
-                getString(R.string.PLAYERS),"1"));
+        register.put(SQLite.GameTable.PLAYERS, prefs.getString(getResources().
+                getString(R.string.PLAYERS), "1"));
         createLog();
     }
 
@@ -218,16 +217,16 @@ public class ActivityResult extends AppCompatActivity implements View.OnClickLis
         outState.putString(Variables.USER, alias);
     }
 
-    public boolean onCreateOptionsMenu(Menu m){
-        getMenuInflater().inflate(R.menu.menu_settings,m);
+    public boolean onCreateOptionsMenu(Menu m) {
+        getMenuInflater().inflate(R.menu.menu_settings, m);
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item){
+    public boolean onOptionsItemSelected(MenuItem item) {
 
         int id = item.getItemId();
-        switch (id){
+        switch (id) {
             case R.id.settings:
                 Intent intent = new Intent(this, PreferencesFragment.class);
                 startActivity(intent);

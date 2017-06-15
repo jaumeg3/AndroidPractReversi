@@ -18,5 +18,10 @@
             class="agut_giralt.androidpractreversi.fragments.FragmentGame"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+        <fragment
+            android:id="@+id/LogFragment"
+            class="agut_giralt.androidpractreversi.fragments.FragmentGameLog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 </RelativeLayout>
