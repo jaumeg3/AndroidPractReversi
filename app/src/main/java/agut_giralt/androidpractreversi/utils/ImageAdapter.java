@@ -129,9 +129,9 @@ public class ImageAdapter extends BaseAdapter {
     private void createNewActivity() {
         int timeLeft;
         if (withTime) {
-            if (gameBoard.timeEnd){
+            if (gameBoard.timeEnd) {
                 timeLeft = 0;
-            }else {
+            } else {
                 timeLeft = gameBoard.getTime() / Variables.SEGON;
             }
         } else {

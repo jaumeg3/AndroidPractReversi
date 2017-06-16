@@ -10,7 +10,7 @@ import agut_giralt.androidpractreversi.fragments.FragmentDetail;
  * Created by Nil Agut and Jaume Giralt.
  * This file has been created for the details of a game. It's only created in devices with small
  * size of the screen.
-*/
+ */
 
 public class DetailActivity extends FragmentActivity {
 

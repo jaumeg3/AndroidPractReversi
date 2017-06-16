@@ -33,13 +33,13 @@ public class LogGame implements Serializable {
                 " Size Grid=" + size + "\n";
         if (!timeActive) {
             logDetails += " Time control disabled\n";
-        }else{
+        } else {
             logDetails += " Time control enable\n";
         }
         time = MyTime.getTime();
     }
 
-    public static LogGame getINSTANCE(Activity ac){
+    public static LogGame getINSTANCE(Activity ac) {
         if (INSTANCE == null) {
             INSTANCE = new LogGame(ac);
         }
@@ -68,7 +68,7 @@ public class LogGame implements Serializable {
     }
 
     private String calculateRemainingTime(GameBoard gameBoard) {
-        return " \t Remaining Time: " + String.valueOf(gameBoard.getTime()/Variables.SEGON) +
+        return " \t Remaining Time: " + String.valueOf(gameBoard.getTime() / Variables.SEGON) +
                 " secs. \n";
     }
 

@@ -25,6 +25,6 @@
         android:layout_height="wrap_content"
         android:drawableLeft="@drawable/back"
         android:drawableStart="@drawable/back"
-        android:text="@string/GoBack"
-        android:onClick="onClick"/>
+        android:onClick="onClick"
+        android:text="@string/GoBack" />
 </LinearLayout>

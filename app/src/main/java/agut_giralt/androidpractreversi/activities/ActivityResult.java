@@ -47,6 +47,7 @@ public class ActivityResult extends AppCompatActivity implements View.OnClickLis
 
     /**
      * This function now gets an instance of the DB.
+     *
      * @param savedInstanceState
      */
     @Override
@@ -156,6 +157,7 @@ public class ActivityResult extends AppCompatActivity implements View.OnClickLis
 
     /**
      * This function now get the values from the intent and save in the DB of the game.
+     *
      * @param intent
      */
     private void getIntentValues(Intent intent) {

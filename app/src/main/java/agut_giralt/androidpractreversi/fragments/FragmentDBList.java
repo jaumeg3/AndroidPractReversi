@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.widget.Button;
 
 import agut_giralt.androidpractreversi.R;
 import agut_giralt.androidpractreversi.activities.DetailActivity;
@@ -40,7 +39,7 @@ public class FragmentDBList extends FragmentActivity implements FragmentList.Gam
         }
     }
 
-    public void onClick(View v){
+    public void onClick(View v) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();

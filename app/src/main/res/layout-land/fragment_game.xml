@@ -5,27 +5,27 @@
     android:layout_height="match_parent"
     android:background="@color/grey"
     android:orientation="horizontal"
-    tools:context="agut_giralt.androidpractreversi.activities.ActivityGame"
-    android:weightSum="100">
+    android:weightSum="100"
+    tools:context="agut_giralt.androidpractreversi.activities.ActivityGame">
 
     <LinearLayout
         android:id="@+id/gameTop"
         android:layout_width="0dp"
-        android:layout_weight="40"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
+        android:layout_weight="40"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/title_game"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/app_name"
-            android:textSize="@dimen/title"
-            android:textStyle="bold|italic"
-            android:textColor="#000"
             android:layout_marginBottom="10dp"
-            android:gravity="center_horizontal"/>
+            android:gravity="center_horizontal"
+            android:text="@string/app_name"
+            android:textColor="#000"
+            android:textSize="@dimen/title"
+            android:textStyle="bold|italic" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -107,9 +107,9 @@
     <LinearLayout
         android:id="@+id/gridLinearLayout"
         android:layout_width="0dp"
-        android:layout_weight="60"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:layout_weight="60"
         android:background="@color/colorBackground"
         android:padding="10dp">
 
