@@ -10,6 +10,11 @@ import java.util.Date;
 
 import agut_giralt.androidpractreversi.R;
 
+/**
+ * Created by Nil Agut and Jaume Giralt.
+ * This file has been created for this deliver. It creates the log for the actual game.
+ */
+
 public class LogGame implements Serializable {
 
     private static LogGame INSTANCE = null;
@@ -63,7 +68,8 @@ public class LogGame implements Serializable {
     }
 
     private String calculateRemainingTime(GameBoard gameBoard) {
-        return " \t Remaining Time: " + String.valueOf(gameBoard.getTime()) + " secs. \n";
+        return " \t Remaining Time: " + String.valueOf(gameBoard.getTime()/Variables.SEGON) +
+                " secs. \n";
     }
 
     private String calculateRemaining(GameBoard gameBoard) {

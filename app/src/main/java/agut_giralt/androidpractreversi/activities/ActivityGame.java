@@ -11,6 +11,8 @@ import agut_giralt.androidpractreversi.utils.LogGame;
 
 /**
  * Created by Nil Agut and Jaume Giralt.
+ * This file has been edited. The code of the activity has been moved to the fragment. The activity
+ * only control the listener in order to have the maximum flexibility between multiple fragments.
  */
 
 public class ActivityGame extends FragmentActivity implements FragmentGame.GameLogListener {

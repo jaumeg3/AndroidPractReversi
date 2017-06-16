@@ -4,6 +4,7 @@ import java.util.List;
 
 /**
  * Created by Nil Agut and Jaume Giralt.
+ * This file has not been edited for this deliver.
  */
 
 class ArtificialIntelligence {

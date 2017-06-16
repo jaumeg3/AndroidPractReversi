@@ -18,7 +18,7 @@ import agut_giralt.androidpractreversi.fragments.FragmentGame;
 
 /**
  * Created by Nil Agut and Jaume Giralt.
- * This file was presented in the first part of the project. There is only one modification,
+ * This file was delivered in the first part of the project. There is only one modification,
  * in order to delegate the log to the host activity.
  */
 

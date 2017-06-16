@@ -16,6 +16,7 @@ import agut_giralt.androidpractreversi.fragments.PreferencesFragment;
 
 /**
  * Created by Nil Agut and Jaume Giralt.
+ * This file has been edited. Now, we have a new button and a menu.
  */
 
 public class MainActivity extends AppCompatActivity implements OnClickListener {

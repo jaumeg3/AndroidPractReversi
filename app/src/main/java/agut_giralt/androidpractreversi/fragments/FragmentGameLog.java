@@ -9,6 +9,11 @@ import android.widget.TextView;
 
 import agut_giralt.androidpractreversi.R;
 
+/**
+ * Created by Nil Agut and Jaume Giralt.
+ * This file has been created for this delivery. This fragment manages the log of the actual game.
+ * It gets a string and it's displayed in the screen. Only for large screen devices.
+ */
 
 public class FragmentGameLog extends Fragment {
 

@@ -16,8 +16,9 @@ import agut_giralt.androidpractreversi.R;
 import agut_giralt.androidpractreversi.utils.SQLite;
 
 /**
- * Created by Nil Agut and Jaume Giralt on 13/06/17.
- *
+ * Created by Nil Agut and Jaume Giralt.
+ * This file has been created for this delivery. The main function is create a list view
+ * with the different logs that has been saved.
  */
 
 public class FragmentList extends Fragment {

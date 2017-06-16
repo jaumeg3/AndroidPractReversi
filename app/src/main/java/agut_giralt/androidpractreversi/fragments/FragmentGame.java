@@ -17,6 +17,11 @@ import agut_giralt.androidpractreversi.utils.GameBoard;
 import agut_giralt.androidpractreversi.utils.ImageAdapter;
 import agut_giralt.androidpractreversi.utils.Variables;
 
+/**
+ * Created by Nil Agut and Jaume Giralt.
+ * This file has been created for this delivery. This file now create the view of the game.
+ * The code of the activity game delivered last month, has been moved here.
+ */
 
 public class FragmentGame extends Fragment {
 

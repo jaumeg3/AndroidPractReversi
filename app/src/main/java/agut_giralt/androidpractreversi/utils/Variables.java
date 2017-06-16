@@ -2,6 +2,7 @@ package agut_giralt.androidpractreversi.utils;
 
 /**
  * Created by Nil Agut and Jaume Giralt.
+ * This file haven't been modified for this deliver.
  */
 
 public class Variables {

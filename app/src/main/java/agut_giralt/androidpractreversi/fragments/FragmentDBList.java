@@ -10,6 +10,12 @@ import agut_giralt.androidpractreversi.R;
 import agut_giralt.androidpractreversi.activities.DetailActivity;
 import agut_giralt.androidpractreversi.activities.MainActivity;
 
+/**
+ * Created by Nil Agut and Jaume Giralt.
+ * This file has been created for this delivery. Is the activity that invoke the list fragment and
+ * the detail fragment depending of the size screen.
+ */
+
 public class FragmentDBList extends FragmentActivity implements FragmentList.GameListener {
 
     @Override

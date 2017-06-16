@@ -8,7 +8,8 @@ import android.preference.PreferenceManager;
 import agut_giralt.androidpractreversi.R;
 
 /**
- * Created by Nil Agut and Jaume Giralt on 12/06/17.
+ * Created by Nil Agut and Jaume Giralt.
+ * This file has been created for this deliver. It manages the menu of shared preferences.
  */
 
 public class PreferencesFragment extends PreferenceActivity {

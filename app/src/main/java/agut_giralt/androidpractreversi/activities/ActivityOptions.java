@@ -16,9 +16,7 @@ import agut_giralt.androidpractreversi.utils.Variables;
 
 /**
  * Created by Nil Agut and Jaume Giralt.
- * <p>
- * Els comentaris han sigut un intent de fer que la layout fos visible i invisible un Edit Text per
- * jugar 2 persones en un mateix dispositiu. En la següent entrega esperem implementar-ho.
+ * This activity is not created anymore. The game options is controlled by a menu.
  */
 
 public class ActivityOptions extends AppCompatActivity implements View.OnClickListener {

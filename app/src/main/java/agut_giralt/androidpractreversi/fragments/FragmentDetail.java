@@ -11,6 +11,12 @@ import android.widget.TextView;
 import agut_giralt.androidpractreversi.R;
 import agut_giralt.androidpractreversi.utils.SQLite;
 
+/**
+ * Created by Nil Agut and Jaume Giralt.
+ * This file has been created for this delivery. This fragment manages the detail of previous games.
+ * It connects to the database and represents the data saved.
+ */
+
 public class FragmentDetail extends Fragment {
 
     @Override

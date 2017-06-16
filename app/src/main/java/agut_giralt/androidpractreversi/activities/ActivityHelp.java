@@ -10,6 +10,7 @@ import agut_giralt.androidpractreversi.R;
 
 /**
  * Created by Nil Agut and Jaume Giralt.
+ * Nothing has changed in this file since the first delivery of the project.
  */
 
 public class ActivityHelp extends AppCompatActivity implements View.OnClickListener {

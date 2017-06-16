@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * Created by Nil Agut and Jaume Giralt.
- * This file was presented in the first part of the project. It hasn't been modified.
+ * This file was delivered in the first part of the project. It hasn't been modified.
  */
 
 public class GameBoard implements Parcelable {

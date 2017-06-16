@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 /**
  * Created by Nil Agut and Jaume Giralt on 12/06/17.
- *
+ * This file has been created for this deliver. It manages the database of the game.
  */
 
 public class SQLite extends SQLiteOpenHelper {

@@ -28,6 +28,7 @@ import agut_giralt.androidpractreversi.utils.Variables;
 
 /**
  * Created by Nil Agut and Jaume Giralt.
+ * This file has been edited. Now, we interact with the DB.
  */
 
 public class ActivityResult extends AppCompatActivity implements View.OnClickListener {
@@ -44,6 +45,10 @@ public class ActivityResult extends AppCompatActivity implements View.OnClickLis
     private EditText email;
     private ContentValues register;
 
+    /**
+     * This function now gets an instance of the DB.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,6 +88,9 @@ public class ActivityResult extends AppCompatActivity implements View.OnClickLis
         alias = savedInstanceState.getString(Variables.USER);
     }
 
+    /**
+     * This function now save data in the database of the game.
+     */
     private void setEditTexts() {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         Date actualDate = new Date();
@@ -146,6 +154,10 @@ public class ActivityResult extends AppCompatActivity implements View.OnClickLis
         }
     }
 
+    /**
+     * This function now get the values from the intent and save in the DB of the game.
+     * @param intent
+     */
     private void getIntentValues(Intent intent) {
         size = intent.getIntExtra(Variables.SIZE, 0);
         register.put(SQLite.GameTable.SIZE, size);
@@ -216,6 +228,8 @@ public class ActivityResult extends AppCompatActivity implements View.OnClickLis
         outState.putInt(Variables.PLAYER2_SCORE, score2);
         outState.putString(Variables.USER, alias);
     }
+
+    // PART 2 - Project
 
     public boolean onCreateOptionsMenu(Menu m) {
         getMenuInflater().inflate(R.menu.menu_settings, m);
